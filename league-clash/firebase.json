@@ -16,6 +16,5 @@
   "database": {
     "rules": "database.rules.json"
   },
-  "functions": {
-  }
+  "functions": {}
 }
