@@ -1,0 +1,43 @@
+{
+  "name": "appengine-hello-world",
+  "description": "Simple Hello World Node.js sample for Google App Engine Standard Environment.",
+  "version": "0.0.2",
+  "private": true,
+  "license": "Apache-2.0",
+  "author": "Google Inc.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GoogleCloudPlatform/nodejs-docs-samples.git"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "scripts": {
+    "start": "nodemon",
+    "test": "mocha --exit test/*.test.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "firebase-admin": "^9.4.2",
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "mocha": "^8.1.3",
+    "nodemon": "^2.0.6",
+    "supertest": "^6.0.0"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "**/*Spec.js",
+      "**/*Spec.ts",
+      ".git",
+      "node_modules",
+      "tmp"
+    ],
+    "watch": [
+      "*.js"
+    ],
+    "ext": "ts,js",
+    "exec": "node ./app.js"
+  }
+}

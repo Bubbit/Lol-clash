@@ -1,0 +1,34 @@
+{ 
+  "player": "name",
+  "statsPerChampion": [
+    {
+      "championId": 5,
+      "against": [{
+        "champ": 40,
+        "wins": 50,
+        "loses": 20
+      }],
+      "wins": 50,
+      "loses": 20,
+      "kills": 2,
+      "deaths": 5,
+      "assists": 122,
+      "wardscore": 2,
+      "creepscore": 500
+    }
+  ],
+  "statsOverall": {
+    "wins": 50,
+    "against": [{
+      "champ": 40,
+      "wins": 50,
+      "loses": 20
+    }],
+    "loses": 20,
+    "kills": 2,
+    "deaths": 5,
+    "assists": 122,
+    "wardscore": 2,
+    "creepscore": 500
+  }
+}

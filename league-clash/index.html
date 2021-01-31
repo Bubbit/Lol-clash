@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="Description" content="Put your description here.">
+  <base href="/">
+
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Segoe UI Regular, Arial, Helvetica, sans-serif;
+      background-color: #282630;
+      color: #ffffff;
+    }
+
+    .nav-container {
+      width: 100%;
+      border-bottom: 1px solid orange;
+    }
+
+    nav {
+      max-width: 1024px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    nav a {
+      display: block;
+      font-size: 16px;
+      line-height: 44px;
+      text-decoration: none;
+      color: #ffffff;
+      transition: all 0.3s;
+    }
+
+    nav a:hover {
+      opacity: 0.7;
+    }
+
+  </style>
+
+  <title>league-clash</title>
+
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" type="text/css"
+  href="./../assets/font/style.css"/>
+</head>
+
+<body>
+  <div class="nav-container">
+    <nav>
+      <a href="/">Home</a>
+      <a href="/scouting">Scouting Grounds</a>
+      <a href="/teams/PizzaTime">Pizza Time</a>
+      <a href="/scouting/PizzaTime">Scouting: Pizza Time</a>
+      <a href="/scouting/WatNoMana">Scouting: Wat No Mana</a>
+      <a href="/teams/WatNoMana">Wat No Mana</a>     
+    </nav>
+  </div>
+ 
+  <main id="outlet">
+  </main>
+  <script type="module" src="./src/league-clash.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+{
+  "scripts": {
+    "lint:eslint": "eslint --ext .js,.html . --ignore-path .gitignore",
+    "format:eslint": "eslint --ext .js,.html . --fix --ignore-path .gitignore",
+    "lint:prettier": "prettier \"**/*.js\" --check --ignore-path .gitignore",
+    "format:prettier": "prettier \"**/*.js\" --write --ignore-path .gitignore",
+    "format": "npm run format:eslint && npm run format:prettier",
+    "build": "rimraf dist && rollup -c rollup.config.js",
+    "start:build": "npm run build && web-dev-server --root-dir dist --app-index index.html --open --compatibility none",
+    "start": "web-dev-server --app-index index.html --node-resolve --open --watch"
+  },
+  "devDependencies": {
+    "@open-wc/building-rollup": "^1.0.0",
+    "@open-wc/eslint-config": "^4.0.0",
+    "@web/dev-server": "^0.0.12",
+    "deepmerge": "^4.2.2",
+    "eslint": "^6.1.0",
+    "eslint-config-prettier": "^6.11.0",
+    "husky": "^1.0.0",
+    "lint-staged": "^10.0.0",
+    "prettier": "^2.0.4",
+    "rimraf": "^2.6.3",
+    "rollup": "^2.3.4",
+    "rollup-plugin-copy-assets": "^2.0.3"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@open-wc/eslint-config",
+      "eslint-config-prettier"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "arrowParens": "avoid"
+  },
+  "name": "league-clash",
+  "version": "0.0.0",
+  "description": "Webcomponent league-clash following open-wc recommendations",
+  "author": "league-clash",
+  "license": "MIT",
+  "dependencies": {
+    "@lion/accordion": "^0.2.4",
+    "@lion/ajax": "^0.5.10",
+    "@lion/button": "^0.8.9",
+    "@lion/dialog": "^0.9.7",
+    "@lion/form": "^0.7.13",
+    "@lion/form-core": "^0.7.0",
+    "@lion/input": "^0.10.13",
+    "@lion/tabs": "^0.5.10",
+    "@vaadin/router": "^1.7.2",
+    "axios": "^0.21.0",
+    "firebase": "^8.1.1",
+    "firebase-admin": "^9.4.2",
+    "firebase-functions": "^3.13.0",
+    "lit-element": "^2.0.1",
+    "lit-html": "^1.0.0"
+  }
+}
