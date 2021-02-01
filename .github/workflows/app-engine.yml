@@ -5,9 +5,13 @@ name: Deploy an App Engine app
       - bub-new-squad
     paths:
       - "app-engine/**"
-id: deploy-app
-uses: google-github-actions/deploy-appengine@v0.1.0
-with:
-  project: ${{ secrets.gcp_project }}
-  deliverables: app-engine/app.yaml
-  credentials: ${{ secrets.gcp_credentials }
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - id: deploy-app
+      - uses: google-github-actions/deploy-appengine@v0.1.0
+        with:
+          project: ${{ secrets.gcp_project }}
+          deliverables: app-engine/app.yaml
+          credentials: ${{ secrets.gcp_credentials }
