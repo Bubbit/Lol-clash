@@ -10,10 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - id: Bash
-        run: |
-          echo "A initial message"
-          ls -ltr
       - uses: google-github-actions/deploy-appengine@main
         with:
           project_id: ${{ secrets.gcp_project }}
