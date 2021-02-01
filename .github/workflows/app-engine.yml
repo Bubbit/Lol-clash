@@ -13,4 +13,4 @@ jobs:
         with:
           project: ${{ secrets.gcp_project }}
           deliverables: app-engine/app.yaml
-          credentials: ${{ secrets.gcp_credentials }
+          credentials: ${{ secrets.gcp_credentials }}
