@@ -3,8 +3,8 @@ name: Deploy an App Engine app
   push:
     branches:
       - bub-new-squad
-    paths:
-      - "app-engine/**"
+    # paths:
+    #   - "app-engine/**"
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
