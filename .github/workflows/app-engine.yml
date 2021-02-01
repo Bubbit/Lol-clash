@@ -9,7 +9,7 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: google-github-actions/deploy-appengine@v0.1.0
+      - uses: google-github-actions/deploy-appengine@main
         with:
           project: ${{ secrets.gcp_project }}
           deliverables: app-engine/app.yaml
