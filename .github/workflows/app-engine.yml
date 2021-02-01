@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-        - run: |
+        run: |
           echo "A initial message"
           echo cwd
           echo ls -ltr
