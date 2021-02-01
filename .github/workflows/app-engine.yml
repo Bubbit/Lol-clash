@@ -9,6 +9,11 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v1
+        - run: |
+          echo "A initial message"
+          echo cwd
+          echo ls -ltr
       - uses: google-github-actions/deploy-appengine@main
         with:
           project_id: ${{ secrets.gcp_project }}
