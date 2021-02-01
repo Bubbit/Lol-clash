@@ -12,7 +12,6 @@ jobs:
       - id: Bash
         run: |
           echo "A initial message"
-          echo cwd
           echo ls -ltr
       - uses: google-github-actions/deploy-appengine@main
         with:
