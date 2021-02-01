@@ -1,0 +1,15 @@
+name: Deploy to App engine on merge
+'on':
+  push:
+    branches:
+      - bub-new-squad
+    paths:
+      - "app-engine/**"
+
+- name: Deploy an App Engine app
+  id: deploy-app
+  uses: google-github-actions/deploy-appengine@v0.1.0
+  with:
+    project: ${{ secrets.gcp_project }}
+    deliverables: app-engine/app.yaml
+    credentials: ${{ secrets.gcp_credentials }
