@@ -11,6 +11,7 @@ jobs:
     steps:
       - uses: google-github-actions/deploy-appengine@main
         with:
-          project: ${{ secrets.gcp_project }}
-          deliverables: app-engine/app.yaml
+          project_id: ${{ secrets.gcp_project }}
+          working_directory: app-engine
+          deliverables: app.yaml
           credentials: ${{ secrets.gcp_credentials }}

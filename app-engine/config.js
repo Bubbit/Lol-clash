@@ -1,11 +1,3 @@
-// Config class
-// Constructor()
-
-// get mainKey()
-
-// get apiKey()
-
-// set apiKey()
 const admin = require('firebase-admin');
 const serviceAccount = require('./data/serviceAccountKey.json');
 
