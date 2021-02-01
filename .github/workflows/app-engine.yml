@@ -12,7 +12,7 @@ jobs:
       - id: Bash
         run: |
           echo "A initial message"
-          echo ls -ltr
+          ls -ltr
       - uses: google-github-actions/deploy-appengine@main
         with:
           project_id: ${{ secrets.gcp_project }}
