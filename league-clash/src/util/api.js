@@ -24,7 +24,7 @@ class LeagueAPI  {
     },
   ];
     this.activeToken = this.tokens[0];
-    this.accountToken = 'RGAPI-659d9cbc-f3f2-4c9a-8930-003fb2463093';
+    this.accountToken = 'RGAPI-0eb9e6db-b4e5-43ea-94d0-739522edee4d';
   }
 
   setNewActiveToken() {
