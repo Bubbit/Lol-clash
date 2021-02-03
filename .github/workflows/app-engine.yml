@@ -8,10 +8,13 @@ name: Deploy an App Engine app
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./app-engine
     steps:
       - uses: actions/checkout@v2
       - run: npm ci
-      - run: 'echo "$SSH_KEY" > ./app-engine/data/serviceAccountKey.json'
+      - run: 'echo "$SSH_KEY" > ./data/serviceAccountKey.json'
         shell: bash
         env:
           SSH_KEY: ${{secrets.gcp_credentials}}
