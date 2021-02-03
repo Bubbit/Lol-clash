@@ -2,6 +2,7 @@ import { Router } from '@vaadin/router';
 import './pages/league-clash-home';
 import './pages/league-clash-teams';
 import './pages/league-clash-team-scout';
+import './pages/league-clash-scouting';
 import './pages/league-clash-404';
 // Firebase App (the core Firebase SDK) is always required and must be listed first
 import firebase from "firebase/app";
@@ -35,8 +36,9 @@ const setup = async function() {
   
   router.setRoutes([
     {path: '/', component: 'league-clash-home'},
+    {path: '/scouting', component: 'league-clash-scouting'},
     {path: '/teams/:teamid', component: 'league-clash-teams'},
-    {path: '/scouting/:teamid', component: 'league-clash-team-scout'},
+    {path: '/scouting-new/:teamid', component: 'league-clash-team-scout'},
     {path: '(.*)', component: 'league-clash-404'},
   ])
   

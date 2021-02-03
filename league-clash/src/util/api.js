@@ -8,12 +8,17 @@ class LeagueAPI  {
   constructor() {
     this.tokens = [
     {
-      key: 'RGAPI-8917a711-f24a-480d-bcee-af04c324bd96',
+      key: 'RGAPI-e74c5819-e6bf-4bbd-bd95-396b8abf6850',
       calls: 0,
       lastUsed: Date.now()
     },
     {
-      key: 'RGAPI-578d07f4-7303-4662-b793-f16cea814d22',
+      key: 'RGAPI-5d81ece4-a9fe-4ca7-8a40-8c2fe8ba5921',
+      calls: 0,
+      lastUsed: Date.now()
+    },
+    {
+      key: 'RGAPI-17d07b9c-d9a3-4d28-bffc-95fa9b11d158',
       calls: 0,
       lastUsed: Date.now()
     },

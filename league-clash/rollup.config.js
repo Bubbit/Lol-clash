@@ -29,15 +29,6 @@ export default merge(baseConfig, {
     copy({
       assets: [
         // You can include directories
-        "assets/champion",
-        "assets/ranked-emblems",
-        "assets/ranked-positions",
-        "assets/opgg_map.png",
-        "assets/league_clash2020.jpg",
-        "assets/poro.png",
-        "assets/load01.gif",
-        "assets/lunar_revel2019_pig.png",
-        "mocks/*.json"
         // You can also include files
       ],
     }),
