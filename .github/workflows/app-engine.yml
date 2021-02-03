@@ -11,6 +11,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: npm ci
+      - run: 'echo "$SSH_KEY" > ./app-engine/data/serviceAccountKey.json'
+        shell: bash
+          env:
+            SSH_KEY: ${{secrets.gcp_credentials}}
       - uses: google-github-actions/deploy-appengine@main
         with:
           project_id: ${{ secrets.gcp_project }}
