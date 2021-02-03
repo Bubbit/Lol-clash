@@ -34,8 +34,8 @@ app.post('/clash/:teamName/', async (req, res) => {
   const team2 = await teamService.getTeam(req.body.team2, req.params.teamName);
   await teamService.getDetailPlayerInfoPerTeam(`${req.params.teamName}/opponents/${team2.name}`, 100);
 
-  const team3 = await teamService.getTeam(req.body.team3, req.params.teamName);
-  await teamService.getDetailPlayerInfoPerTeam(`${req.params.teamName}/opponents/${team3.name}`, 100);
+  // const team3 = await teamService.getTeam(req.body.team3, req.params.teamName);
+  // await teamService.getDetailPlayerInfoPerTeam(`${req.params.teamName}/opponents/${team3.name}`, 100);
 /*
   const team4 = await teamService.getTeam(req.body.team4, req.params.teamName);
   await teamService.getDetailPlayerInfoPerTeam(`${req.params.teamName}/opponents/${team4.name}`, 100);

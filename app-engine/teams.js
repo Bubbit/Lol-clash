@@ -25,10 +25,15 @@ const allowedQueues = [400, 420, 430, 440, 700];
 
 const getTeam = async (playerName, teamName) => {
   const mainKey = config.mainKey();
+  console.log(mainKey);
   const captain = await playerService.getSummonerData(playerName);
   // Get clashID
+
+  console.log(captain);
   const clashID = await fetch(`https://euw1.api.riotgames.com/lol/clash/v1/players/by-summoner/${captain.id}?api_key=${mainKey}`).then(res => res.json());
   const clashTeam = await fetch(`https://euw1.api.riotgames.com/lol/clash/v1/teams/${clashID[0].teamId}?api_key=${mainKey}`).then(res => res.json());
+  
+  console.log(clashTeam);
   // let clashTeam;
   // if(playerName === 'bubbit') {
   //   clashTeam = {
