@@ -91,7 +91,7 @@ const getTeam = async (playerName, teamName) => {
   const players = clashTeam.players.sort((player1, player2) => positionOrder[player1.position] - positionOrder[player2.position]);
 
   const team = {
-    name: clashTeam.name,
+    name: playerName,
     players: [],
     iconId: clashTeam.iconId
   }
@@ -103,7 +103,7 @@ const getTeam = async (playerName, teamName) => {
   }
 
   const db = config.getDatabase();
-  db.ref(`${teamName}/opponents/${clashTeam.name}`).set(team);
+  db.ref(`${teamName}/opponents/${playerName}`).set(team);
   return team;
 }
 

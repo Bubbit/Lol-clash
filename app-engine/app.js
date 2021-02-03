@@ -30,29 +30,33 @@ app.post('/clash/:teamName/', async (req, res) => {
   const team1 = await teamService.getTeam(req.body.team1, req.params.teamName);
   await teamService.getDetailPlayerInfoPerTeam(`${req.params.teamName}/opponents/${team1.name}`, 30);
   
+  let hrend = process.hrtime(hrstart);
+  console.info('Execution time: %ds %dms', hrend[0], hrend[1] / 1000000);
   res.status(200).send('ok').end();
   // Get other teams - limit to 100 matches
   const team2 = await teamService.getTeam(req.body.team2, req.params.teamName);
   await teamService.getDetailPlayerInfoPerTeam(`${req.params.teamName}/opponents/${team2.name}`, 100);
+  console.log(team2.name)
 
-  // const team3 = await teamService.getTeam(req.body.team3, req.params.teamName);
-  // await teamService.getDetailPlayerInfoPerTeam(`${req.params.teamName}/opponents/${team3.name}`, 100);
-/*
+  const team3 = await teamService.getTeam(req.body.team3, req.params.teamName);
+  await teamService.getDetailPlayerInfoPerTeam(`${req.params.teamName}/opponents/${team3.name}`, 100);
+  console.log(team3.name)
+
   const team4 = await teamService.getTeam(req.body.team4, req.params.teamName);
   await teamService.getDetailPlayerInfoPerTeam(`${req.params.teamName}/opponents/${team4.name}`, 100);
+  console.log(team4.name)
 
   const team5 = await teamService.getTeam(req.body.team5, req.params.teamName);
   await teamService.getDetailPlayerInfoPerTeam(`${req.params.teamName}/opponents/${team5.name}`, 100);
+  console.log(team5.name)
 
   const team6 = await teamService.getTeam(req.body.team6, req.params.teamName);
   await teamService.getDetailPlayerInfoPerTeam(`${req.params.teamName}/opponents/${team6.name}`, 100);
+  console.log(team6.name)
 
   const team7 = await teamService.getTeam(req.body.team7, req.params.teamName);
   await teamService.getDetailPlayerInfoPerTeam(`${req.params.teamName}/opponents/${team7.name}`, 100);
-  */
-
-  let hrend = process.hrtime(hrstart);
-  console.info('Execution time: %ds %dms', hrend[0], hrend[1] / 1000000);
+  console.log(team7.name)
 });
 
 app.get('/clash/update/:teamName/:opponentTeamName', async (req, res) => {
