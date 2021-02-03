@@ -95,7 +95,7 @@ export class LeaguePlayer2 extends LitElement {
     console.log(this.player);
     return html`
       <h2>${this.player.name}</h2>
-      <div class="position"><img src="./../assets/ranked-positions/Position_Gold-${this.role}.png"></div>
+      <div class="position"><img src="./../assets/ranked-positions/PositionGold-${this.role}.png"></div>
       <div class="ranks">
       </div>
       <div>
@@ -139,7 +139,7 @@ export class LeaguePlayer2 extends LitElement {
         return html`
         <div class="match" id=${match.metadata.gameId} @click=${this.selectMatch} ?clash=${match.metadata.queue === 700}>
           <img src="./../assets/champion/${window.champList[match.playerInfo.championId].name.replace(/[\'\s]/g, '')}.png">
-          ${match.lane !== 'NONE' ? html`<img src="./../assets/ranked-positions/Position_Gold-${match.metadata.lane}.png">` : html`<img src="./../assets/lunar_revel2019_pig.png">`}
+          ${match.lane !== 'NONE' ? html`<img src="./../assets/ranked-positions/PositionGold-${match.metadata.lane}.png">` : html`<img src="./../assets/lunar_revel2019_pig.png">`}
           <div>${match.playerInfo.stats.win ? 'Won' : 'Lost'}</div>
           <div>${match.playerInfo.stats.kills} / ${match.playerInfo.stats.deaths} / ${match.playerInfo.stats.assists}</div>
         </div>

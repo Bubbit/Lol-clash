@@ -159,7 +159,7 @@ export class LeaguePlayer extends LitElement {
   render() {
     return html`
       <h2>${this.playerName}</h2>
-      <div class="position"><img src="./../assets/ranked-positions/Position_Gold-${this.player.position}.png"> </div>
+      <div class="position"><img src="./../assets/ranked-positions/PositionGold-${this.player.position}.png"> </div>
       ${this.loading ? html`
         <img class="loading" src="./../assets/load01.gif">
       ` : html`
@@ -167,7 +167,7 @@ export class LeaguePlayer extends LitElement {
           ${this.rankList.map(rank => html`
           <div>${rankEnum[rank.queueType]}</div>
           <div>
-            <img src="./../assets/ranked-emblems/Emblem_${rank.tier}.png"> ${rank.rank}
+            <img src="./../assets/ranked-emblems/Emblems_${rank.tier}.png"> ${rank.rank}
           </div>    
         `)}
         </div>
@@ -183,7 +183,7 @@ export class LeaguePlayer extends LitElement {
           return html`
           <div class="match" id=${match.gameId} @click=${this.selectMatch} ?clash=${match.queue === 700}>
             <img src="./../assets/champion/${window.champList[match.champion].name.replace(/\s/g, '')}.png">
-            ${match.lane !== 'NONE' ? html`<img src="./../assets/ranked-positions/Position_Gold-${match.lane}.png">` : html`<img src="./../assets/lunar_revel2019_pig.png">`}
+            ${match.lane !== 'NONE' ? html`<img src="./../assets/ranked-positions/PositionGold-${match.lane}.png">` : html`<img src="./../assets/lunar_revel2019_pig.png">`}
             <div>${match.participantInfo.stats.win ? 'Won' : 'Lost'}</div>
             <div>${match.participantInfo.stats.kills} / ${match.participantInfo.stats.deaths} / ${match.participantInfo.stats.assists}</div>
           </div>
