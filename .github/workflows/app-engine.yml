@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: npm ci
-      - run: 'echo "$SSH_KEY" > ./data/serviceAccountKey.json'
+      - run: 'echo "$SSH_KEY" > ./serviceAccountKey.json'
         shell: bash
         env:
           SSH_KEY: ${{secrets.gcp_credentials}}
