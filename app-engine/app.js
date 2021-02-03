@@ -30,6 +30,7 @@ app.post('/clash/:teamName/', async (req, res) => {
   const team1 = await teamService.getTeam(req.body.team1, req.params.teamName);
   await teamService.getDetailPlayerInfoPerTeam(`${req.params.teamName}/opponents/${team1.name}`, 30);
   
+  res.status(200).send('ok').end();
   // Get other teams - limit to 100 matches
   const team2 = await teamService.getTeam(req.body.team2, req.params.teamName);
   await teamService.getDetailPlayerInfoPerTeam(`${req.params.teamName}/opponents/${team2.name}`, 100);
@@ -49,9 +50,9 @@ app.post('/clash/:teamName/', async (req, res) => {
   const team7 = await teamService.getTeam(req.body.team7, req.params.teamName);
   await teamService.getDetailPlayerInfoPerTeam(`${req.params.teamName}/opponents/${team7.name}`, 100);
   */
+
   let hrend = process.hrtime(hrstart);
   console.info('Execution time: %ds %dms', hrend[0], hrend[1] / 1000000);
-  res.status(200).send('ok').end();
 });
 
 app.get('/clash/update/:teamName/:opponentTeamName', async (req, res) => {
