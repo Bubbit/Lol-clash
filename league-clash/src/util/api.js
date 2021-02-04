@@ -8,20 +8,15 @@ class LeagueAPI  {
   constructor() {
     this.tokens = [
     {
-      key: 'RGAPI-e74c5819-e6bf-4bbd-bd95-396b8abf6850',
+      key: 'RGAPI-56350441-2ab2-42d5-801c-3c021e642169',
       calls: 0,
       lastUsed: Date.now()
     },
     {
-      key: 'RGAPI-5d81ece4-a9fe-4ca7-8a40-8c2fe8ba5921',
+      key: 'RGAPI-b2d23db6-5bf5-431e-b2ee-8180f104792f',
       calls: 0,
       lastUsed: Date.now()
-    },
-    {
-      key: 'RGAPI-17d07b9c-d9a3-4d28-bffc-95fa9b11d158',
-      calls: 0,
-      lastUsed: Date.now()
-    },
+    }
   ];
     this.activeToken = this.tokens[0];
     this.accountToken = 'RGAPI-0eb9e6db-b4e5-43ea-94d0-739522edee4d';
