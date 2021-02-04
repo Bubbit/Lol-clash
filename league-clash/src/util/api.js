@@ -16,6 +16,11 @@ class LeagueAPI  {
       key: 'RGAPI-b2d23db6-5bf5-431e-b2ee-8180f104792f',
       calls: 0,
       lastUsed: Date.now()
+    },
+    {
+      key: 'RGAPI-f556ee3f-6aed-4324-af25-f06dacd3b8a0',
+      calls: 0,
+      lastUsed: Date.now()
     }
   ];
     this.activeToken = this.tokens[0];
