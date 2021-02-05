@@ -354,7 +354,7 @@ export class LeagueClashTeams extends LitElement {
       this.comps = this.compsData ? Object.keys(this.compsData) : [];
     });
 
-    const championData = await axios.get('https://ddragon.leagueoflegends.com/cdn/10.23.1/data/en_US/champion.json');
+    const championData = await axios.get('https://ddragon.leagueoflegends.com/cdn/11.3.1/data/en_US/champion.json');
     this.originalChamps = championData.data.data;
     this.champs = Object.keys(this.originalChamps);
     this.filteredChamps = this.champs;
