@@ -59,7 +59,7 @@ export class LeagueClashTeams extends LitElement {
 
       .search-champs {
         overflow-y: scroll;
-        height: calc(100vh - 200px);
+        height: calc(100vh - 230px);
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
         grid-gap: 5px;
