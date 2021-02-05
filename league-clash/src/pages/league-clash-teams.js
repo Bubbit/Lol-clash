@@ -144,6 +144,7 @@ export class LeagueClashTeams extends LitElement {
         grid-gap: 3px;
         grid-template-columns: 1fr 45px 45px 45px 45px 45px;
         padding-right: 10px;
+        height: 28px;
       }
 
       .role {
@@ -284,51 +285,41 @@ export class LeagueClashTeams extends LitElement {
   addChampToPlayer(event) {
     event.preventDefault();
     const champ = event.dataTransfer.getData("text");
-    const data = event.target.id;
-    console.log(data, champ);
-    // const compInfo = this.compsData[data[0]];
-    // if(compInfo && !(compInfo[data[1]] && compInfo[data[1]].some(champName => champName === champ))) {
-    //   const newChamps = compInfo[data[1]] ? compInfo[data[1]].concat([champ]) : [champ];
-    //   const update = {}
-    //   update[data[1]] = newChamps
-    //   window.database.ref(`${this.team}_comps/${data[0]}`).update(update);
-    // }
-  }
-
-
-  changeChamp(player, champ, list, event) {
-    const playerInfo = this.playersData[player];
-    if(list === 'main') {
-      console.log(event);
-      if(event.button) {
-        if(playerInfo.mainChamps && playerInfo.mainChamps.some(champName => champName === champ)) {
-          const newChamps = playerInfo.mainChamps.filter(champName => champ !== champName);
-          window.database.ref(`${this.team}/${player}`).update({
-            mainChamps : newChamps
-          });
-        }
+    const data = event.target.id || event.path[1].id;
+    const dataSplit = data.split('-');
+    const playerInfo = this.playersData[dataSplit[0]];
+    if(dataSplit[1] === 'prim') {
+      if(!(playerInfo.mainChamps && playerInfo.mainChamps.some(champName => champName === champ))) {
+        const newChamps = playerInfo.mainChamps ? playerInfo.mainChamps.concat([champ]) : [champ];
+        window.database.ref(`${this.team}/${dataSplit[0]}`).update({
+          mainChamps : newChamps
+        });
       }
     } else {
-      if(event.button) {
-        if(playerInfo.learningChamps && playerInfo.learningChamps.some(champName => champName === champ)) {
-          const newChamps = playerInfo.learningChamps.filter(champName => champ !== champName);
-          window.database.ref(`${this.team}/${player}`).update({
-            learningChamps : newChamps
-          });
-        }
-      } else {
-        if(!(playerInfo.mainChamps && playerInfo.mainChamps.some(champName => champName === champ))) {
-          const newChamps = playerInfo.mainChamps ? playerInfo.mainChamps.concat([champ]) : [champ];
-          window.database.ref(`${this.team}/${player}`).update({
-            mainChamps : newChamps
-          });
-        }
-        if(playerInfo.learningChamps && playerInfo.learningChamps.some(champName => champName === champ)) {
-          const newChamps = playerInfo.learningChamps.filter(champName => champ !== champName);
-          window.database.ref(`${this.team}/${player}`).update({
-            learningChamps : newChamps
-          });
-        }
+      if(!(playerInfo.learningChamps && playerInfo.learningChamps.some(champName => champName === champ))) {
+        const newChamps = playerInfo.learningChamps ? playerInfo.learningChamps.concat([champ]) : [champ];
+        window.database.ref(`${this.team}/${dataSplit[0]}`).update({
+          learningChamps : newChamps
+        });
+      }
+    }
+  }
+
+  removeChampFromPlayer(player, champ, list) {
+    const playerInfo = this.playersData[player];
+    if(list === 'main') {
+      if(playerInfo.mainChamps && playerInfo.mainChamps.some(champName => champName === champ)) {
+        const newChamps = playerInfo.mainChamps.filter(champName => champ !== champName);
+        window.database.ref(`${this.team}/${player}`).update({
+          mainChamps : newChamps
+        });
+      }
+    } else {
+      if(playerInfo.learningChamps && playerInfo.learningChamps.some(champName => champName === champ)) {
+        const newChamps = playerInfo.learningChamps.filter(champName => champ !== champName);
+        window.database.ref(`${this.team}/${player}`).update({
+          learningChamps : newChamps
+        });
       }
     }
   }
@@ -343,11 +334,11 @@ export class LeagueClashTeams extends LitElement {
 
   filterChamps() {
     const searchValue = this.shadowRoot.getElementById('search').value;
+    console.log('filter', searchValue)
     this.filteredChamps = this.champs.filter(champName => champName.toLowerCase().includes(searchValue.toLowerCase()));
   }
 
   async connectedCallback() {
-    this.addEventListener('contextmenu', event => event.preventDefault());
     super.connectedCallback();
 
     this.team = window.location.pathname.split('/')[2];
@@ -394,15 +385,15 @@ export class LeagueClashTeams extends LitElement {
             </div>
             <div class="player-champs">
               <div>Primary Role:</div>
-              <div @drop=${this.addChampToPlayer} @dragover=${this.allowDrop}>
+              <div id="${player}-prim" @drop=${this.addChampToPlayer} @dragover=${this.allowDrop}>
               ${this.playersData[player].mainChamps && this.playersData[player].mainChamps.map(champ => html`
-                <img src="./../assets/champion/${champ.replace(/\s/g, '')}.png" @click=${(event) => this.changeChamp(player, champ, 'main', event)}>
+                <img src="./../assets/champion/${champ.replace(/\s/g, '')}.png" @click=${() => this.removeChampFromPlayer(player, champ, 'main')}>
               `)}
               </div>
               <div>Learning:</div>
-              <div @drop=${this.addChampToPlayer} @dragover=${this.allowDrop}>
+              <div id="${player}-learn" @drop=${this.addChampToPlayer} @dragover=${this.allowDrop}>
               ${this.playersData[player].learningChamps && this.playersData[player].learningChamps.map(champ => html`
-                <img src="./../assets/champion/${champ.replace(/\s/g, '')}.png" @click=${(event) => this.changeChamp(player, champ, 'learning', event)}>
+                <img src="./../assets/champion/${champ.replace(/\s/g, '')}.png" @click=${() => this.removeChampFromPlayer(player, champ, 'learning')}>
               `)}
               </div>
             </div>
@@ -457,7 +448,7 @@ export class LeagueClashTeams extends LitElement {
           </div>
         </div>
         <div class="champs-col">
-          <input id="search" placeholder="Search" @keydown=${this.filterChamps}/>
+          <input id="search" placeholder="Search" @keyup=${this.filterChamps}/>
           <div class="search-champs">
           ${this.filteredChamps && this.filteredChamps.map(champName => html`
             <img draggable="true" class="draggable" src="./../assets/champion/${champName.replace(/\s/g, '')}.png" id=${champName} @dragstart=${this.onDragStart}>
