@@ -13,7 +13,7 @@
     "node": ">=14.0.0"
   },
   "scripts": {
-    "start": "nodemon",
+    "start": "node app.js",
     "test": "mocha --exit test/*.test.js"
   },
   "dependencies": {
