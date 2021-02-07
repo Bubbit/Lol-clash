@@ -33,4 +33,4 @@ jobs:
         app-name: 'bubbit-test-app'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_f81774c0157c4c37a10738f1705ee34c }}
-        package: .
+        package: ./app-engine
