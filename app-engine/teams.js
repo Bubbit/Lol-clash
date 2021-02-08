@@ -34,58 +34,207 @@ const getTeam = async (playerName, teamName) => {
   const clashTeam = await fetch(`https://euw1.api.riotgames.com/lol/clash/v1/teams/${clashID[0].teamId}?api_key=${mainKey}`).then(res => res.json());
   
   // let clashTeam;
-  // if(playerName === 'bubbit') {
-  //   clashTeam = {
-  //     players: [{
-  //       id: '-aCtSbhMWy1JufsAjA1qoIl798XfcuMCTw7kdng0kZOhpQA',
-  //       position: 'TOP'
-  //     },
-  //     {
-  //       id: 'yZgCwPa2ngGbInI17Kz8t3T567b1pKgjMfbl4pzA_Jfsfow',
-  //       position: 'UTILITY'
-  //     },
-  //     {
-  //       id: 'GbG-Eq4EzJ3WmkFTd2s11FTqQH2nSOtvIwU3A2RNi0W-2Bw',
-  //       position: 'MIDDLE'
-  //     },
-  //     {
-  //       id: 'ioONalJKPn2Idi8s_T0WoKaDgLT3PlSGtJUgs_csudjnPq9y',
-  //       position: 'UNSELECTED'
-  //     },
-  //     {
-  //       id: 'F4U7ncZDHzrqa6o0qFhvZUHey3g0dcNs-JyhrSx30QbuI4Y',
-  //       position: 'JUNGLE'
-  //     }],
-  //     name: 'potatoSquad',
-  //     iconId: 4831
-  //   }
-  // } else {
-  //   clashTeam = {
-  //     players: [{
-  //       id: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
-  //       position: 'TOP'
-  //     },
-  //     {
-  //       id: 'QXRdwQoFavtBgZGy39L8fVPDQXfjVEhmq_LvB78bJE_vUS0',
-  //       position: 'UTILITY'
-  //     },
-  //     {
-  //       id: 'V-a4J5lPCWJikhMVddxnVoKAk24Fgf2wzjD3LvRN2673-c09',
-  //       position: 'MIDDLE'
-  //     },
-  //     {
-  //       id: 'tMUIhaXoqyyuf0aG7GZF5wlMnWDIj90-_Q2cg2DlfgphAZV9',
-  //       position: 'UNSELECTED'
-  //     },
-  //     {
-  //       id: 'dGX-B6Z6llF06OYWSxISqMSuN9y8xqTi-6KVcjf2ckG5xSM',
-  //       position: 'JUNGLE'
-  //     }],
-  //     name: 'bonkSquad',
-  //     iconId: 4281
-  //   }
-  // }
-  
+  if(playerName === 'bubbit') {
+    clashTeam = {
+      players: [{
+        id: '-aCtSbhMWy1JufsAjA1qoIl798XfcuMCTw7kdng0kZOhpQA',
+        position: 'TOP'
+      },
+      {
+        id: 'yZgCwPa2ngGbInI17Kz8t3T567b1pKgjMfbl4pzA_Jfsfow',
+        position: 'UTILITY'
+      },
+      {
+        id: 'GbG-Eq4EzJ3WmkFTd2s11FTqQH2nSOtvIwU3A2RNi0W-2Bw',
+        position: 'MIDDLE'
+      },
+      {
+        id: 'ioONalJKPn2Idi8s_T0WoKaDgLT3PlSGtJUgs_csudjnPq9y',
+        position: 'UNSELECTED'
+      },
+      {
+        id: 'F4U7ncZDHzrqa6o0qFhvZUHey3g0dcNs-JyhrSx30QbuI4Y',
+        position: 'JUNGLE'
+      }],
+      name: 'potatoSquad',
+      iconId: 4831
+    }
+  } else if (playerName === 'thegreyspy') {
+    clashTeam = {
+      players: [{
+        id: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
+        position: 'TOP'
+      },
+      {
+        id: 'QXRdwQoFavtBgZGy39L8fVPDQXfjVEhmq_LvB78bJE_vUS0',
+        position: 'UTILITY'
+      },
+      {
+        id: 'V-a4J5lPCWJikhMVddxnVoKAk24Fgf2wzjD3LvRN2673-c09',
+        position: 'MIDDLE'
+      },
+      {
+        id: 'tMUIhaXoqyyuf0aG7GZF5wlMnWDIj90-_Q2cg2DlfgphAZV9',
+        position: 'UNSELECTED'
+      },
+      {
+        id: 'dGX-B6Z6llF06OYWSxISqMSuN9y8xqTi-6KVcjf2ckG5xSM',
+        position: 'JUNGLE'
+      }],
+      name: 'ZiggsSquad',
+      iconId: 4281
+    }
+  } else if (playerName === 'panthersoap') {
+    clashTeam = {
+      players: [{
+        id: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
+        position: 'TOP'
+      },
+      {
+        id: 'QXRdwQoFavtBgZGy39L8fVPDQXfjVEhmq_LvB78bJE_vUS0',
+        position: 'UTILITY'
+      },
+      {
+        id: 'V-a4J5lPCWJikhMVddxnVoKAk24Fgf2wzjD3LvRN2673-c09',
+        position: 'MIDDLE'
+      },
+      {
+        id: 'tMUIhaXoqyyuf0aG7GZF5wlMnWDIj90-_Q2cg2DlfgphAZV9',
+        position: 'UNSELECTED'
+      },
+      {
+        id: 'dGX-B6Z6llF06OYWSxISqMSuN9y8xqTi-6KVcjf2ckG5xSM',
+        position: 'JUNGLE'
+      }],
+      name: 'vapeSquad',
+      iconId: 4281
+    }
+  } else if (playerName === 'jemjem') {
+    clashTeam = {
+      players: [{
+        id: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
+        position: 'TOP'
+      },
+      {
+        id: 'QXRdwQoFavtBgZGy39L8fVPDQXfjVEhmq_LvB78bJE_vUS0',
+        position: 'UTILITY'
+      },
+      {
+        id: 'V-a4J5lPCWJikhMVddxnVoKAk24Fgf2wzjD3LvRN2673-c09',
+        position: 'MIDDLE'
+      },
+      {
+        id: 'tMUIhaXoqyyuf0aG7GZF5wlMnWDIj90-_Q2cg2DlfgphAZV9',
+        position: 'UNSELECTED'
+      },
+      {
+        id: 'dGX-B6Z6llF06OYWSxISqMSuN9y8xqTi-6KVcjf2ckG5xSM',
+        position: 'JUNGLE'
+      }],
+      name: 'asianSquad',
+      iconId: 4281
+    }
+  } else if (playerName = 'renee') {
+    clashTeam = {
+      players: [{
+        id: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
+        position: 'TOP'
+      },
+      {
+        id: 'QXRdwQoFavtBgZGy39L8fVPDQXfjVEhmq_LvB78bJE_vUS0',
+        position: 'UTILITY'
+      },
+      {
+        id: 'V-a4J5lPCWJikhMVddxnVoKAk24Fgf2wzjD3LvRN2673-c09',
+        position: 'MIDDLE'
+      },
+      {
+        id: 'tMUIhaXoqyyuf0aG7GZF5wlMnWDIj90-_Q2cg2DlfgphAZV9',
+        position: 'UNSELECTED'
+      },
+      {
+        id: 'dGX-B6Z6llF06OYWSxISqMSuN9y8xqTi-6KVcjf2ckG5xSM',
+        position: 'JUNGLE'
+      }],
+      name: 'bonkSquad',
+      iconId: 4281
+    }
+  } else if (playerName = 'julia') {
+    clashTeam = {
+      players: [{
+        id: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
+        position: 'TOP'
+      },
+      {
+        id: 'QXRdwQoFavtBgZGy39L8fVPDQXfjVEhmq_LvB78bJE_vUS0',
+        position: 'UTILITY'
+      },
+      {
+        id: 'V-a4J5lPCWJikhMVddxnVoKAk24Fgf2wzjD3LvRN2673-c09',
+        position: 'MIDDLE'
+      },
+      {
+        id: 'tMUIhaXoqyyuf0aG7GZF5wlMnWDIj90-_Q2cg2DlfgphAZV9',
+        position: 'UNSELECTED'
+      },
+      {
+        id: 'dGX-B6Z6llF06OYWSxISqMSuN9y8xqTi-6KVcjf2ckG5xSM',
+        position: 'JUNGLE'
+      }],
+      name: 'QuinnSquad',
+      iconId: 4281
+    }
+  } else if (playerName = 'tom') {
+    clashTeam = {
+      players: [{
+        id: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
+        position: 'TOP'
+      },
+      {
+        id: 'QXRdwQoFavtBgZGy39L8fVPDQXfjVEhmq_LvB78bJE_vUS0',
+        position: 'UTILITY'
+      },
+      {
+        id: 'V-a4J5lPCWJikhMVddxnVoKAk24Fgf2wzjD3LvRN2673-c09',
+        position: 'MIDDLE'
+      },
+      {
+        id: 'tMUIhaXoqyyuf0aG7GZF5wlMnWDIj90-_Q2cg2DlfgphAZV9',
+        position: 'UNSELECTED'
+      },
+      {
+        id: 'dGX-B6Z6llF06OYWSxISqMSuN9y8xqTi-6KVcjf2ckG5xSM',
+        position: 'JUNGLE'
+      }],
+      name: 'JungleSquad',
+      iconId: 4281
+    }
+  } else if (playerName = 'rob') {
+    clashTeam = {
+      players: [{
+        id: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
+        position: 'TOP'
+      },
+      {
+        id: 'QXRdwQoFavtBgZGy39L8fVPDQXfjVEhmq_LvB78bJE_vUS0',
+        position: 'UTILITY'
+      },
+      {
+        id: 'V-a4J5lPCWJikhMVddxnVoKAk24Fgf2wzjD3LvRN2673-c09',
+        position: 'MIDDLE'
+      },
+      {
+        id: 'tMUIhaXoqyyuf0aG7GZF5wlMnWDIj90-_Q2cg2DlfgphAZV9',
+        position: 'UNSELECTED'
+      },
+      {
+        id: 'dGX-B6Z6llF06OYWSxISqMSuN9y8xqTi-6KVcjf2ckG5xSM',
+        position: 'JUNGLE'
+      }],
+      name: 'BrotherSquad',
+      iconId: 4281
+    }
+  }
 
   const players = clashTeam.players.sort((player1, player2) => positionOrder[player1.position] - positionOrder[player2.position]);
 
