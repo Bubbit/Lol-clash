@@ -38,23 +38,23 @@ const getTeam = async (playerName, teamName) => {
   if(playerName === 'bubbit') {
     clashTeam = {
       players: [{
-        id: '-aCtSbhMWy1JufsAjA1qoIl798XfcuMCTw7kdng0kZOhpQA',
+        summonerId: '-aCtSbhMWy1JufsAjA1qoIl798XfcuMCTw7kdng0kZOhpQA',
         position: 'TOP'
       },
       {
-        id: 'yZgCwPa2ngGbInI17Kz8t3T567b1pKgjMfbl4pzA_Jfsfow',
+        summonerId: 'yZgCwPa2ngGbInI17Kz8t3T567b1pKgjMfbl4pzA_Jfsfow',
         position: 'UTILITY'
       },
       {
-        id: 'GbG-Eq4EzJ3WmkFTd2s11FTqQH2nSOtvIwU3A2RNi0W-2Bw',
+        summonerId: 'GbG-Eq4EzJ3WmkFTd2s11FTqQH2nSOtvIwU3A2RNi0W-2Bw',
         position: 'MIDDLE'
       },
       {
-        id: 'ioONalJKPn2Idi8s_T0WoKaDgLT3PlSGtJUgs_csudjnPq9y',
+        summonerId: 'ioONalJKPn2Idi8s_T0WoKaDgLT3PlSGtJUgs_csudjnPq9y',
         position: 'UNSELECTED'
       },
       {
-        id: 'F4U7ncZDHzrqa6o0qFhvZUHey3g0dcNs-JyhrSx30QbuI4Y',
+        summonerId: 'F4U7ncZDHzrqa6o0qFhvZUHey3g0dcNs-JyhrSx30QbuI4Y',
         position: 'JUNGLE'
       }],
       name: 'potatoSquad',
@@ -63,23 +63,23 @@ const getTeam = async (playerName, teamName) => {
   } else if (playerName === 'thegreyspy') {
     clashTeam = {
       players: [{
-        id: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
+        summonerId: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
         position: 'TOP'
       },
       {
-        id: 'QXRdwQoFavtBgZGy39L8fVPDQXfjVEhmq_LvB78bJE_vUS0',
+        summonerId: 'QXRdwQoFavtBgZGy39L8fVPDQXfjVEhmq_LvB78bJE_vUS0',
         position: 'UTILITY'
       },
       {
-        id: 'V-a4J5lPCWJikhMVddxnVoKAk24Fgf2wzjD3LvRN2673-c09',
+        summonerId: 'V-a4J5lPCWJikhMVddxnVoKAk24Fgf2wzjD3LvRN2673-c09',
         position: 'MIDDLE'
       },
       {
-        id: 'tMUIhaXoqyyuf0aG7GZF5wlMnWDIj90-_Q2cg2DlfgphAZV9',
+        summonerId: 'tMUIhaXoqyyuf0aG7GZF5wlMnWDIj90-_Q2cg2DlfgphAZV9',
         position: 'UNSELECTED'
       },
       {
-        id: 'dGX-B6Z6llF06OYWSxISqMSuN9y8xqTi-6KVcjf2ckG5xSM',
+        summonerId: 'dGX-B6Z6llF06OYWSxISqMSuN9y8xqTi-6KVcjf2ckG5xSM',
         position: 'JUNGLE'
       }],
       name: 'ZiggsSquad',
@@ -88,23 +88,23 @@ const getTeam = async (playerName, teamName) => {
   } else if (playerName === 'panthersoap') {
     clashTeam = {
       players: [{
-        id: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
+        summonerId: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
         position: 'TOP'
       },
       {
-        id: 'QXRdwQoFavtBgZGy39L8fVPDQXfjVEhmq_LvB78bJE_vUS0',
+        summonerId: 'QXRdwQoFavtBgZGy39L8fVPDQXfjVEhmq_LvB78bJE_vUS0',
         position: 'UTILITY'
       },
       {
-        id: 'V-a4J5lPCWJikhMVddxnVoKAk24Fgf2wzjD3LvRN2673-c09',
+        summonerId: 'V-a4J5lPCWJikhMVddxnVoKAk24Fgf2wzjD3LvRN2673-c09',
         position: 'MIDDLE'
       },
       {
-        id: 'tMUIhaXoqyyuf0aG7GZF5wlMnWDIj90-_Q2cg2DlfgphAZV9',
+        summonerId: 'tMUIhaXoqyyuf0aG7GZF5wlMnWDIj90-_Q2cg2DlfgphAZV9',
         position: 'UNSELECTED'
       },
       {
-        id: 'dGX-B6Z6llF06OYWSxISqMSuN9y8xqTi-6KVcjf2ckG5xSM',
+        summonerId: 'dGX-B6Z6llF06OYWSxISqMSuN9y8xqTi-6KVcjf2ckG5xSM',
         position: 'JUNGLE'
       }],
       name: 'vapeSquad',
@@ -113,23 +113,23 @@ const getTeam = async (playerName, teamName) => {
   } else if (playerName === 'jemjem') {
     clashTeam = {
       players: [{
-        id: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
+        summonerId: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
         position: 'TOP'
       },
       {
-        id: 'QXRdwQoFavtBgZGy39L8fVPDQXfjVEhmq_LvB78bJE_vUS0',
+        summonerId: 'QXRdwQoFavtBgZGy39L8fVPDQXfjVEhmq_LvB78bJE_vUS0',
         position: 'UTILITY'
       },
       {
-        id: 'V-a4J5lPCWJikhMVddxnVoKAk24Fgf2wzjD3LvRN2673-c09',
+        summonerId: 'V-a4J5lPCWJikhMVddxnVoKAk24Fgf2wzjD3LvRN2673-c09',
         position: 'MIDDLE'
       },
       {
-        id: 'tMUIhaXoqyyuf0aG7GZF5wlMnWDIj90-_Q2cg2DlfgphAZV9',
+        summonerId: 'tMUIhaXoqyyuf0aG7GZF5wlMnWDIj90-_Q2cg2DlfgphAZV9',
         position: 'UNSELECTED'
       },
       {
-        id: 'dGX-B6Z6llF06OYWSxISqMSuN9y8xqTi-6KVcjf2ckG5xSM',
+        summonerId: 'dGX-B6Z6llF06OYWSxISqMSuN9y8xqTi-6KVcjf2ckG5xSM',
         position: 'JUNGLE'
       }],
       name: 'asianSquad',
@@ -138,23 +138,23 @@ const getTeam = async (playerName, teamName) => {
   } else if (playerName = 'renee') {
     clashTeam = {
       players: [{
-        id: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
+        summonerId: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
         position: 'TOP'
       },
       {
-        id: 'QXRdwQoFavtBgZGy39L8fVPDQXfjVEhmq_LvB78bJE_vUS0',
+        summonerId: 'QXRdwQoFavtBgZGy39L8fVPDQXfjVEhmq_LvB78bJE_vUS0',
         position: 'UTILITY'
       },
       {
-        id: 'V-a4J5lPCWJikhMVddxnVoKAk24Fgf2wzjD3LvRN2673-c09',
+        summonerId: 'V-a4J5lPCWJikhMVddxnVoKAk24Fgf2wzjD3LvRN2673-c09',
         position: 'MIDDLE'
       },
       {
-        id: 'tMUIhaXoqyyuf0aG7GZF5wlMnWDIj90-_Q2cg2DlfgphAZV9',
+        summonerId: 'tMUIhaXoqyyuf0aG7GZF5wlMnWDIj90-_Q2cg2DlfgphAZV9',
         position: 'UNSELECTED'
       },
       {
-        id: 'dGX-B6Z6llF06OYWSxISqMSuN9y8xqTi-6KVcjf2ckG5xSM',
+        summonerId: 'dGX-B6Z6llF06OYWSxISqMSuN9y8xqTi-6KVcjf2ckG5xSM',
         position: 'JUNGLE'
       }],
       name: 'bonkSquad',
@@ -163,23 +163,23 @@ const getTeam = async (playerName, teamName) => {
   } else if (playerName = 'julia') {
     clashTeam = {
       players: [{
-        id: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
+        summonerId: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
         position: 'TOP'
       },
       {
-        id: 'QXRdwQoFavtBgZGy39L8fVPDQXfjVEhmq_LvB78bJE_vUS0',
+        summonerId: 'QXRdwQoFavtBgZGy39L8fVPDQXfjVEhmq_LvB78bJE_vUS0',
         position: 'UTILITY'
       },
       {
-        id: 'V-a4J5lPCWJikhMVddxnVoKAk24Fgf2wzjD3LvRN2673-c09',
+        summonerId: 'V-a4J5lPCWJikhMVddxnVoKAk24Fgf2wzjD3LvRN2673-c09',
         position: 'MIDDLE'
       },
       {
-        id: 'tMUIhaXoqyyuf0aG7GZF5wlMnWDIj90-_Q2cg2DlfgphAZV9',
+        summonerId: 'tMUIhaXoqyyuf0aG7GZF5wlMnWDIj90-_Q2cg2DlfgphAZV9',
         position: 'UNSELECTED'
       },
       {
-        id: 'dGX-B6Z6llF06OYWSxISqMSuN9y8xqTi-6KVcjf2ckG5xSM',
+        summonerId: 'dGX-B6Z6llF06OYWSxISqMSuN9y8xqTi-6KVcjf2ckG5xSM',
         position: 'JUNGLE'
       }],
       name: 'QuinnSquad',
@@ -188,23 +188,23 @@ const getTeam = async (playerName, teamName) => {
   } else if (playerName = 'tom') {
     clashTeam = {
       players: [{
-        id: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
+        summonerId: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
         position: 'TOP'
       },
       {
-        id: 'QXRdwQoFavtBgZGy39L8fVPDQXfjVEhmq_LvB78bJE_vUS0',
+        summonerId: 'QXRdwQoFavtBgZGy39L8fVPDQXfjVEhmq_LvB78bJE_vUS0',
         position: 'UTILITY'
       },
       {
-        id: 'V-a4J5lPCWJikhMVddxnVoKAk24Fgf2wzjD3LvRN2673-c09',
+        summonerId: 'V-a4J5lPCWJikhMVddxnVoKAk24Fgf2wzjD3LvRN2673-c09',
         position: 'MIDDLE'
       },
       {
-        id: 'tMUIhaXoqyyuf0aG7GZF5wlMnWDIj90-_Q2cg2DlfgphAZV9',
+        summonerId: 'tMUIhaXoqyyuf0aG7GZF5wlMnWDIj90-_Q2cg2DlfgphAZV9',
         position: 'UNSELECTED'
       },
       {
-        id: 'dGX-B6Z6llF06OYWSxISqMSuN9y8xqTi-6KVcjf2ckG5xSM',
+        summonerId: 'dGX-B6Z6llF06OYWSxISqMSuN9y8xqTi-6KVcjf2ckG5xSM',
         position: 'JUNGLE'
       }],
       name: 'JungleSquad',
@@ -213,23 +213,23 @@ const getTeam = async (playerName, teamName) => {
   } else if (playerName = 'rob') {
     clashTeam = {
       players: [{
-        id: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
+        summonerId: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
         position: 'TOP'
       },
       {
-        id: 'QXRdwQoFavtBgZGy39L8fVPDQXfjVEhmq_LvB78bJE_vUS0',
+        summonerId: 'QXRdwQoFavtBgZGy39L8fVPDQXfjVEhmq_LvB78bJE_vUS0',
         position: 'UTILITY'
       },
       {
-        id: 'V-a4J5lPCWJikhMVddxnVoKAk24Fgf2wzjD3LvRN2673-c09',
+        summonerId: 'V-a4J5lPCWJikhMVddxnVoKAk24Fgf2wzjD3LvRN2673-c09',
         position: 'MIDDLE'
       },
       {
-        id: 'tMUIhaXoqyyuf0aG7GZF5wlMnWDIj90-_Q2cg2DlfgphAZV9',
+        summonerId: 'tMUIhaXoqyyuf0aG7GZF5wlMnWDIj90-_Q2cg2DlfgphAZV9',
         position: 'UNSELECTED'
       },
       {
-        id: 'dGX-B6Z6llF06OYWSxISqMSuN9y8xqTi-6KVcjf2ckG5xSM',
+        summonerId: 'dGX-B6Z6llF06OYWSxISqMSuN9y8xqTi-6KVcjf2ckG5xSM',
         position: 'JUNGLE'
       }],
       name: 'BrotherSquad',
