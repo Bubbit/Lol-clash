@@ -11,8 +11,10 @@ const getMetadataPlayer = async (summonerId) => {
   const mainKey = config.mainKey();
   const summonerData = await fetch(`https://euw1.api.riotgames.com/lol/summoner/v4/summoners/${summonerId}?api_key=${mainKey}`).then(res => res.json())
   // get MasteryData
+  console.log(`https://euw1.api.riotgames.com/lol/summoner/v4/summoners/${summonerId}?api_key=${mainKey}`);
   console.log(summonerData);
   const masteryData = await fetch(`https://euw1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/${summonerId}?api_key=${mainKey}`).then(res => res.json())
+  console.log(`https://euw1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/${summonerId}?api_key=${mainKey}`);
   console.log(masteryData);
   // get Ranks
 
