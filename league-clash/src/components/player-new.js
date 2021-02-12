@@ -138,6 +138,7 @@ export class LeaguePlayer2 extends LitElement {
       ${this.matches.map(match => {
         return html`
         <div class="match" id=${match.metadata.gameId} @click=${this.selectMatch} ?clash=${match.metadata.queue === 700}>
+         ${match.playerInfo.championId}
           <img src="./../assets/champion/${window.champList[match.playerInfo.championId].name.replace(/[\'\s]/g, '')}.png">
           ${match.lane !== 'NONE' ? html`<img src="./../assets/ranked-positions/PositionGold-${match.metadata.lane}.png">` : html`<img src="./../assets/lunar_revel2019_pig.png">`}
           <div>${match.playerInfo.stats.win ? 'Won' : 'Lost'}</div>
