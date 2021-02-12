@@ -120,21 +120,21 @@ export async function getMasteryData(summonerID) {
 }
 
 export async function sendClashTeams(teamName, opponentTeams) {
-  const result = await ajax.post(`https://remco-clash.ew.r.appspot.com/clash/${teamName}/`, opponentTeams);
+  const result = await ajax.post(`http://bubbit-test-app.azurewebsites.net/clash/${teamName}/`, opponentTeams);
   console.log(result.data);
 }
 
 export async function getClashAnalysis(teamName, opponentTeamName) {
-  const result = await ajax.get(`https://remco-clash.ew.r.appspot.com/clash/${teamName}/${opponentTeamName}`);
+  const result = await ajax.get(`http://bubbit-test-app.azurewebsites.net/clash/${teamName}/${opponentTeamName}`);
   return result.data;
 }
 
 export async function updateClashTeam(teamName, opponentTeamName) {
-  const result = await ajax.get(`https://remco-clash.ew.r.appspot.com/clash/update/${teamName}/${opponentTeamName}`);
+  const result = await ajax.get(`http://bubbit-test-app.azurewebsites.net/clash/update/${teamName}/${opponentTeamName}`);
   return result.data;
 }
 
 export async function deleteClashTeam(teamName, opponentTeamName) {
-  const result = await ajax.get(`https://remco-clash.ew.r.appspot.com/clash/clean/${teamName}/${opponentTeamName}`);
+  const result = await ajax.get(`http://bubbit-test-app.azurewebsites.net/clash/clean/${teamName}/${opponentTeamName}`);
   return result.data;
 }
