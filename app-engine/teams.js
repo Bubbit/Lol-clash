@@ -135,7 +135,7 @@ const getTeam = async (playerName, teamName) => {
       name: 'asianSquad',
       iconId: 4281
     }
-  } else if (playerName = 'renee') {
+  } else if (playerName === 'renee') {
     clashTeam = {
       players: [{
         summonerId: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
@@ -160,7 +160,7 @@ const getTeam = async (playerName, teamName) => {
       name: 'bonkSquad',
       iconId: 4281
     }
-  } else if (playerName = 'julia') {
+  } else if (playerName === 'julia') {
     clashTeam = {
       players: [{
         summonerId: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
@@ -185,7 +185,7 @@ const getTeam = async (playerName, teamName) => {
       name: 'QuinnSquad',
       iconId: 4281
     }
-  } else if (playerName = 'tom') {
+  } else if (playerName === 'tom') {
     clashTeam = {
       players: [{
         summonerId: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
@@ -210,7 +210,7 @@ const getTeam = async (playerName, teamName) => {
       name: 'JungleSquad',
       iconId: 4281
     }
-  } else if (playerName = 'rob') {
+  } else if (playerName === 'rob') {
     clashTeam = {
       players: [{
         summonerId: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
@@ -236,6 +236,9 @@ const getTeam = async (playerName, teamName) => {
       iconId: 4281
     }
   }
+
+  console.log(playerName);
+  console.log(clashTeam);
 
   const players = clashTeam.players.sort((player1, player2) => positionOrder[player1.position] - positionOrder[player2.position]);
 
