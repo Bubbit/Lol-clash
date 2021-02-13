@@ -12,6 +12,10 @@ const app = express();
 
 app.use(express.json());
 
+app.use('/', (req, res) => {
+  res.status(200).send('hoi').end();
+});
+
 app.get('/testkeys', (req, res) => {
   console.log(config.getKeys());
 

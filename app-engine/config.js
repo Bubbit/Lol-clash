@@ -15,6 +15,7 @@ class Config {
     configRef.on('value', async (snapshot) =>{
       this.config = snapshot.val();
       if(this.config.keys) {
+        this.config.keys = this.config.keys.filter(Boolean);
         this.resetKeys(this.config.keys);
       }
     });

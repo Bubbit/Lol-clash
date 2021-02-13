@@ -461,10 +461,10 @@ const analyzeSquad = (teamName) => {
         playerData.statsOverall.averageAssists = playerData.statsOverall.assists / playerData.statsOverall.total;
         playerData.statsOverall.kda = (playerData.statsOverall.averageKills + playerData.statsOverall.averageAssists) / playerData.statsOverall.averageDeaths;
         playerData.statsOverall.against.forEach((champ) => champ.winRate = champ.wins * 100 / champ.total);
-        playerData.statsOverall.against = playerData.statsOverall.against.sort((a, b) => a.winRate - b.winRate).sort((a, b) => b.total - a.total);
+        playerData.statsOverall.against = playerData.statsOverall.against.sort((a, b) => b.total - a.total).sort((a, b) => a.winRate - b.winRate);
         playerData.statsPerChampion.forEach((champ) => {
           champ.against.forEach((againstChamp) => againstChamp.winRate = againstChamp.wins * 100 / againstChamp.total);
-          champ.against = champ.against.sort((a, b) => a.winRate - b.winRate).sort((a, b) => b.total - a.total);
+          champ.against = champ.against.sort((a, b) => b.total - a.total).sort((a, b) => a.winRate - b.winRate);
           champ.winRate = champ.wins * 100 / champ.total;
         });
         playerData.statsPerChampion = playerData.statsPerChampion.sort((a, b) => b.winRate - a.winRate).sort((a, b) => b.total - a.total);
