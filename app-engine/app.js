@@ -12,10 +12,6 @@ const app = express();
 
 app.use(express.json());
 
-app.use('/', (req, res) => {
-  res.status(200).send('hoi').end();
-});
-
 app.get('/testkeys', (req, res) => {
   console.log(config.getKeys());
 
@@ -140,6 +136,10 @@ app.get('/keys/:name/:key', async (req, res) => {
     keys: newKeys
   });
   res.status(200).send('Added key!').end();
+});
+
+app.use('/', (req, res) => {
+  res.status(200).send('hoi').end();
 });
 
 const PORT = process.env.PORT || 8080;
