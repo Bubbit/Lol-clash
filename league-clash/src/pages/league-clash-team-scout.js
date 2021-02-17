@@ -31,7 +31,8 @@ export class LeagueClashTeamScout extends LitElement {
       }
 
       #clash-opponents {
-        display: flex;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
         border-bottom: 3px solid #8C6834;
       }
 
@@ -65,7 +66,6 @@ export class LeagueClashTeamScout extends LitElement {
     super.connectedCallback();
 
     this.team = window.location.pathname.split('/')[2];
-    console.log(this.team);
     const teamRef = window.database.ref(`${this.team}/opponents`);
     teamRef.on('value', (snapshot) =>{
       this.opponents = snapshot.val();
@@ -126,7 +126,6 @@ export class LeagueClashTeamScout extends LitElement {
       <div id="clash-opponents">
         ${Object.keys(this.opponents).map((opponent) => html`<div @click=${() => { this._getAnalysis(this.opponents[opponent].name, this.opponents[opponent])}}>
           <img src="http://ddragon.leagueoflegends.com/cdn/11.1.1/img/profileicon/${this.opponents[opponent].iconId}.png">
-          <!-- <img src="http://ddragon.leagueoflegends.com/cdn/11.1.1/img/profileicon/683.png"> -->
           ${this.opponents[opponent].name}        
         </div>`)}
         <button @click=${this._deleteOpponents}>Delete all info</button>

@@ -31,211 +31,211 @@ const getTeam = async (playerName, teamName) => {
 
   console.log(captain);
   const clashID = await fetch(`https://euw1.api.riotgames.com/lol/clash/v1/players/by-summoner/${captain.id}?api_key=${mainKey}`).then(res => res.json());
-  // console.log(clashID);
-  // const clashTeam = await fetch(`https://euw1.api.riotgames.com/lol/clash/v1/teams/${clashID[0].teamId}?api_key=${mainKey}`).then(res => res.json());
+  console.log(clashID);
+  const clashTeam = await fetch(`https://euw1.api.riotgames.com/lol/clash/v1/teams/${clashID[0].teamId}?api_key=${mainKey}`).then(res => res.json());
   
   // let clashTeam;
-  if(playerName === 'bubbit') {
-    clashTeam = {
-      players: [{
-        summonerId: '-aCtSbhMWy1JufsAjA1qoIl798XfcuMCTw7kdng0kZOhpQA',
-        position: 'TOP'
-      },
-      {
-        summonerId: 'yZgCwPa2ngGbInI17Kz8t3T567b1pKgjMfbl4pzA_Jfsfow',
-        position: 'UTILITY'
-      },
-      {
-        summonerId: 'GbG-Eq4EzJ3WmkFTd2s11FTqQH2nSOtvIwU3A2RNi0W-2Bw',
-        position: 'MIDDLE'
-      },
-      {
-        summonerId: 'ioONalJKPn2Idi8s_T0WoKaDgLT3PlSGtJUgs_csudjnPq9y',
-        position: 'UNSELECTED'
-      },
-      {
-        summonerId: 'F4U7ncZDHzrqa6o0qFhvZUHey3g0dcNs-JyhrSx30QbuI4Y',
-        position: 'JUNGLE'
-      }],
-      name: 'potatoSquad',
-      iconId: 4831
-    }
-  } else if (playerName === 'thegreyspy') {
-    clashTeam = {
-      players: [{
-        summonerId: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
-        position: 'TOP'
-      },
-      {
-        summonerId: 'QXRdwQoFavtBgZGy39L8fVPDQXfjVEhmq_LvB78bJE_vUS0',
-        position: 'UTILITY'
-      },
-      {
-        summonerId: 'V-a4J5lPCWJikhMVddxnVoKAk24Fgf2wzjD3LvRN2673-c09',
-        position: 'MIDDLE'
-      },
-      {
-        summonerId: 'tMUIhaXoqyyuf0aG7GZF5wlMnWDIj90-_Q2cg2DlfgphAZV9',
-        position: 'UNSELECTED'
-      },
-      {
-        summonerId: 'dGX-B6Z6llF06OYWSxISqMSuN9y8xqTi-6KVcjf2ckG5xSM',
-        position: 'JUNGLE'
-      }],
-      name: 'ZiggsSquad',
-      iconId: 4281
-    }
-  } else if (playerName === 'panthersoap') {
-    clashTeam = {
-      players: [{
-        summonerId: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
-        position: 'TOP'
-      },
-      {
-        summonerId: 'QXRdwQoFavtBgZGy39L8fVPDQXfjVEhmq_LvB78bJE_vUS0',
-        position: 'UTILITY'
-      },
-      {
-        summonerId: 'V-a4J5lPCWJikhMVddxnVoKAk24Fgf2wzjD3LvRN2673-c09',
-        position: 'MIDDLE'
-      },
-      {
-        summonerId: 'tMUIhaXoqyyuf0aG7GZF5wlMnWDIj90-_Q2cg2DlfgphAZV9',
-        position: 'UNSELECTED'
-      },
-      {
-        summonerId: 'dGX-B6Z6llF06OYWSxISqMSuN9y8xqTi-6KVcjf2ckG5xSM',
-        position: 'JUNGLE'
-      }],
-      name: 'vapeSquad',
-      iconId: 4281
-    }
-  } else if (playerName === 'jemjem') {
-    clashTeam = {
-      players: [{
-        summonerId: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
-        position: 'TOP'
-      },
-      {
-        summonerId: 'QXRdwQoFavtBgZGy39L8fVPDQXfjVEhmq_LvB78bJE_vUS0',
-        position: 'UTILITY'
-      },
-      {
-        summonerId: 'V-a4J5lPCWJikhMVddxnVoKAk24Fgf2wzjD3LvRN2673-c09',
-        position: 'MIDDLE'
-      },
-      {
-        summonerId: 'tMUIhaXoqyyuf0aG7GZF5wlMnWDIj90-_Q2cg2DlfgphAZV9',
-        position: 'UNSELECTED'
-      },
-      {
-        summonerId: 'dGX-B6Z6llF06OYWSxISqMSuN9y8xqTi-6KVcjf2ckG5xSM',
-        position: 'JUNGLE'
-      }],
-      name: 'asianSquad',
-      iconId: 4281
-    }
-  } else if (playerName === 'renee') {
-    clashTeam = {
-      players: [{
-        summonerId: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
-        position: 'TOP'
-      },
-      {
-        summonerId: 'QXRdwQoFavtBgZGy39L8fVPDQXfjVEhmq_LvB78bJE_vUS0',
-        position: 'UTILITY'
-      },
-      {
-        summonerId: 'V-a4J5lPCWJikhMVddxnVoKAk24Fgf2wzjD3LvRN2673-c09',
-        position: 'MIDDLE'
-      },
-      {
-        summonerId: 'tMUIhaXoqyyuf0aG7GZF5wlMnWDIj90-_Q2cg2DlfgphAZV9',
-        position: 'UNSELECTED'
-      },
-      {
-        summonerId: 'dGX-B6Z6llF06OYWSxISqMSuN9y8xqTi-6KVcjf2ckG5xSM',
-        position: 'JUNGLE'
-      }],
-      name: 'bonkSquad',
-      iconId: 4281
-    }
-  } else if (playerName === 'julia') {
-    clashTeam = {
-      players: [{
-        summonerId: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
-        position: 'TOP'
-      },
-      {
-        summonerId: 'QXRdwQoFavtBgZGy39L8fVPDQXfjVEhmq_LvB78bJE_vUS0',
-        position: 'UTILITY'
-      },
-      {
-        summonerId: 'V-a4J5lPCWJikhMVddxnVoKAk24Fgf2wzjD3LvRN2673-c09',
-        position: 'MIDDLE'
-      },
-      {
-        summonerId: 'tMUIhaXoqyyuf0aG7GZF5wlMnWDIj90-_Q2cg2DlfgphAZV9',
-        position: 'UNSELECTED'
-      },
-      {
-        summonerId: 'dGX-B6Z6llF06OYWSxISqMSuN9y8xqTi-6KVcjf2ckG5xSM',
-        position: 'JUNGLE'
-      }],
-      name: 'QuinnSquad',
-      iconId: 4281
-    }
-  } else if (playerName === 'tom') {
-    clashTeam = {
-      players: [{
-        summonerId: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
-        position: 'TOP'
-      },
-      {
-        summonerId: 'QXRdwQoFavtBgZGy39L8fVPDQXfjVEhmq_LvB78bJE_vUS0',
-        position: 'UTILITY'
-      },
-      {
-        summonerId: 'V-a4J5lPCWJikhMVddxnVoKAk24Fgf2wzjD3LvRN2673-c09',
-        position: 'MIDDLE'
-      },
-      {
-        summonerId: 'tMUIhaXoqyyuf0aG7GZF5wlMnWDIj90-_Q2cg2DlfgphAZV9',
-        position: 'UNSELECTED'
-      },
-      {
-        summonerId: 'dGX-B6Z6llF06OYWSxISqMSuN9y8xqTi-6KVcjf2ckG5xSM',
-        position: 'JUNGLE'
-      }],
-      name: 'JungleSquad',
-      iconId: 4281
-    }
-  } else if (playerName === 'rob') {
-    clashTeam = {
-      players: [{
-        summonerId: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
-        position: 'TOP'
-      },
-      {
-        summonerId: 'QXRdwQoFavtBgZGy39L8fVPDQXfjVEhmq_LvB78bJE_vUS0',
-        position: 'UTILITY'
-      },
-      {
-        summonerId: 'V-a4J5lPCWJikhMVddxnVoKAk24Fgf2wzjD3LvRN2673-c09',
-        position: 'MIDDLE'
-      },
-      {
-        summonerId: 'tMUIhaXoqyyuf0aG7GZF5wlMnWDIj90-_Q2cg2DlfgphAZV9',
-        position: 'UNSELECTED'
-      },
-      {
-        summonerId: 'dGX-B6Z6llF06OYWSxISqMSuN9y8xqTi-6KVcjf2ckG5xSM',
-        position: 'JUNGLE'
-      }],
-      name: 'BrotherSquad',
-      iconId: 4281
-    }
-  }
+  // if(playerName === 'bubbit') {
+  //   clashTeam = {
+  //     players: [{
+  //       summonerId: '-aCtSbhMWy1JufsAjA1qoIl798XfcuMCTw7kdng0kZOhpQA',
+  //       position: 'TOP'
+  //     },
+  //     {
+  //       summonerId: 'yZgCwPa2ngGbInI17Kz8t3T567b1pKgjMfbl4pzA_Jfsfow',
+  //       position: 'UTILITY'
+  //     },
+  //     {
+  //       summonerId: 'GbG-Eq4EzJ3WmkFTd2s11FTqQH2nSOtvIwU3A2RNi0W-2Bw',
+  //       position: 'MIDDLE'
+  //     },
+  //     {
+  //       summonerId: 'ioONalJKPn2Idi8s_T0WoKaDgLT3PlSGtJUgs_csudjnPq9y',
+  //       position: 'UNSELECTED'
+  //     },
+  //     {
+  //       summonerId: 'F4U7ncZDHzrqa6o0qFhvZUHey3g0dcNs-JyhrSx30QbuI4Y',
+  //       position: 'JUNGLE'
+  //     }],
+  //     name: 'potatoSquad',
+  //     iconId: 4831
+  //   }
+  // } else if (playerName === 'thegreyspy') {
+  //   clashTeam = {
+  //     players: [{
+  //       summonerId: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
+  //       position: 'TOP'
+  //     },
+  //     {
+  //       summonerId: 'QXRdwQoFavtBgZGy39L8fVPDQXfjVEhmq_LvB78bJE_vUS0',
+  //       position: 'UTILITY'
+  //     },
+  //     {
+  //       summonerId: 'V-a4J5lPCWJikhMVddxnVoKAk24Fgf2wzjD3LvRN2673-c09',
+  //       position: 'MIDDLE'
+  //     },
+  //     {
+  //       summonerId: 'tMUIhaXoqyyuf0aG7GZF5wlMnWDIj90-_Q2cg2DlfgphAZV9',
+  //       position: 'UNSELECTED'
+  //     },
+  //     {
+  //       summonerId: 'dGX-B6Z6llF06OYWSxISqMSuN9y8xqTi-6KVcjf2ckG5xSM',
+  //       position: 'JUNGLE'
+  //     }],
+  //     name: 'ZiggsSquad',
+  //     iconId: 4281
+  //   }
+  // } else if (playerName === 'panthersoap') {
+  //   clashTeam = {
+  //     players: [{
+  //       summonerId: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
+  //       position: 'TOP'
+  //     },
+  //     {
+  //       summonerId: 'QXRdwQoFavtBgZGy39L8fVPDQXfjVEhmq_LvB78bJE_vUS0',
+  //       position: 'UTILITY'
+  //     },
+  //     {
+  //       summonerId: 'V-a4J5lPCWJikhMVddxnVoKAk24Fgf2wzjD3LvRN2673-c09',
+  //       position: 'MIDDLE'
+  //     },
+  //     {
+  //       summonerId: 'tMUIhaXoqyyuf0aG7GZF5wlMnWDIj90-_Q2cg2DlfgphAZV9',
+  //       position: 'UNSELECTED'
+  //     },
+  //     {
+  //       summonerId: 'dGX-B6Z6llF06OYWSxISqMSuN9y8xqTi-6KVcjf2ckG5xSM',
+  //       position: 'JUNGLE'
+  //     }],
+  //     name: 'vapeSquad',
+  //     iconId: 4281
+  //   }
+  // } else if (playerName === 'jemjem') {
+  //   clashTeam = {
+  //     players: [{
+  //       summonerId: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
+  //       position: 'TOP'
+  //     },
+  //     {
+  //       summonerId: 'QXRdwQoFavtBgZGy39L8fVPDQXfjVEhmq_LvB78bJE_vUS0',
+  //       position: 'UTILITY'
+  //     },
+  //     {
+  //       summonerId: 'V-a4J5lPCWJikhMVddxnVoKAk24Fgf2wzjD3LvRN2673-c09',
+  //       position: 'MIDDLE'
+  //     },
+  //     {
+  //       summonerId: 'tMUIhaXoqyyuf0aG7GZF5wlMnWDIj90-_Q2cg2DlfgphAZV9',
+  //       position: 'UNSELECTED'
+  //     },
+  //     {
+  //       summonerId: 'dGX-B6Z6llF06OYWSxISqMSuN9y8xqTi-6KVcjf2ckG5xSM',
+  //       position: 'JUNGLE'
+  //     }],
+  //     name: 'asianSquad',
+  //     iconId: 4281
+  //   }
+  // } else if (playerName === 'renee') {
+  //   clashTeam = {
+  //     players: [{
+  //       summonerId: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
+  //       position: 'TOP'
+  //     },
+  //     {
+  //       summonerId: 'QXRdwQoFavtBgZGy39L8fVPDQXfjVEhmq_LvB78bJE_vUS0',
+  //       position: 'UTILITY'
+  //     },
+  //     {
+  //       summonerId: 'V-a4J5lPCWJikhMVddxnVoKAk24Fgf2wzjD3LvRN2673-c09',
+  //       position: 'MIDDLE'
+  //     },
+  //     {
+  //       summonerId: 'tMUIhaXoqyyuf0aG7GZF5wlMnWDIj90-_Q2cg2DlfgphAZV9',
+  //       position: 'UNSELECTED'
+  //     },
+  //     {
+  //       summonerId: 'dGX-B6Z6llF06OYWSxISqMSuN9y8xqTi-6KVcjf2ckG5xSM',
+  //       position: 'JUNGLE'
+  //     }],
+  //     name: 'bonkSquad',
+  //     iconId: 4281
+  //   }
+  // } else if (playerName === 'julia') {
+  //   clashTeam = {
+  //     players: [{
+  //       summonerId: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
+  //       position: 'TOP'
+  //     },
+  //     {
+  //       summonerId: 'QXRdwQoFavtBgZGy39L8fVPDQXfjVEhmq_LvB78bJE_vUS0',
+  //       position: 'UTILITY'
+  //     },
+  //     {
+  //       summonerId: 'V-a4J5lPCWJikhMVddxnVoKAk24Fgf2wzjD3LvRN2673-c09',
+  //       position: 'MIDDLE'
+  //     },
+  //     {
+  //       summonerId: 'tMUIhaXoqyyuf0aG7GZF5wlMnWDIj90-_Q2cg2DlfgphAZV9',
+  //       position: 'UNSELECTED'
+  //     },
+  //     {
+  //       summonerId: 'dGX-B6Z6llF06OYWSxISqMSuN9y8xqTi-6KVcjf2ckG5xSM',
+  //       position: 'JUNGLE'
+  //     }],
+  //     name: 'QuinnSquad',
+  //     iconId: 4281
+  //   }
+  // } else if (playerName === 'tom') {
+  //   clashTeam = {
+  //     players: [{
+  //       summonerId: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
+  //       position: 'TOP'
+  //     },
+  //     {
+  //       summonerId: 'QXRdwQoFavtBgZGy39L8fVPDQXfjVEhmq_LvB78bJE_vUS0',
+  //       position: 'UTILITY'
+  //     },
+  //     {
+  //       summonerId: 'V-a4J5lPCWJikhMVddxnVoKAk24Fgf2wzjD3LvRN2673-c09',
+  //       position: 'MIDDLE'
+  //     },
+  //     {
+  //       summonerId: 'tMUIhaXoqyyuf0aG7GZF5wlMnWDIj90-_Q2cg2DlfgphAZV9',
+  //       position: 'UNSELECTED'
+  //     },
+  //     {
+  //       summonerId: 'dGX-B6Z6llF06OYWSxISqMSuN9y8xqTi-6KVcjf2ckG5xSM',
+  //       position: 'JUNGLE'
+  //     }],
+  //     name: 'JungleSquad',
+  //     iconId: 4281
+  //   }
+  // } else if (playerName === 'rob') {
+  //   clashTeam = {
+  //     players: [{
+  //       summonerId: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
+  //       position: 'TOP'
+  //     },
+  //     {
+  //       summonerId: 'QXRdwQoFavtBgZGy39L8fVPDQXfjVEhmq_LvB78bJE_vUS0',
+  //       position: 'UTILITY'
+  //     },
+  //     {
+  //       summonerId: 'V-a4J5lPCWJikhMVddxnVoKAk24Fgf2wzjD3LvRN2673-c09',
+  //       position: 'MIDDLE'
+  //     },
+  //     {
+  //       summonerId: 'tMUIhaXoqyyuf0aG7GZF5wlMnWDIj90-_Q2cg2DlfgphAZV9',
+  //       position: 'UNSELECTED'
+  //     },
+  //     {
+  //       summonerId: 'dGX-B6Z6llF06OYWSxISqMSuN9y8xqTi-6KVcjf2ckG5xSM',
+  //       position: 'JUNGLE'
+  //     }],
+  //     name: 'BrotherSquad',
+  //     iconId: 4281
+  //   }
+  // }
 
   console.log(playerName);
   console.log(clashTeam);
@@ -243,7 +243,7 @@ const getTeam = async (playerName, teamName) => {
   const players = clashTeam.players.sort((player1, player2) => positionOrder[player1.position] - positionOrder[player2.position]);
 
   const team = {
-    name: playerName,
+    name: clashTeam.name,
     players: [],
     iconId: clashTeam.iconId
   }

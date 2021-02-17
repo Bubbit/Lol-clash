@@ -91,6 +91,16 @@ export class LeaguePlayer2 extends LitElement {
     this.dispatchEvent(matchEvent);
   }
 
+  getRole(lane, role) {
+    if(role === 'DUO_SUPPORT') {
+      return 'UTILITY';
+    } else if (role === 'DUO_CARRY') {
+      return 'BOT';
+    } else {
+      return lane;
+    }
+  }
+
   render() {
     console.log(this.player);
     return html`
@@ -138,9 +148,8 @@ export class LeaguePlayer2 extends LitElement {
       ${this.matches.map(match => {
         return html`
         <div class="match" id=${match.metadata.gameId} @click=${this.selectMatch} ?clash=${match.metadata.queue === 700}>
-         ${match.playerInfo.championId}
           <img src="./../assets/champion/${window.champList[match.playerInfo.championId].name.replace(/[\'\s]/g, '')}.png">
-          ${match.lane !== 'NONE' ? html`<img src="./../assets/ranked-positions/PositionGold-${match.metadata.lane}.png">` : html`<img src="./../assets/lunar_revel2019_pig.png">`}
+          ${match.lane !== 'NONE' ? html`<img src="./../assets/ranked-positions/PositionGold-${this.getRole(match.metadata.lane, match.metadata.role)}.png">` : html`<img src="./../assets/lunar_revel2019_pig.png">`}
           <div>${match.playerInfo.stats.win ? 'Won' : 'Lost'}</div>
           <div>${match.playerInfo.stats.kills} / ${match.playerInfo.stats.deaths} / ${match.playerInfo.stats.assists}</div>
         </div>
