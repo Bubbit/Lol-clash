@@ -9,7 +9,7 @@ import firebase from "firebase/app";
 import "firebase/database";
 
 const getChampionData = async function() {
-  const championData = await axios.get('https://ddragon.leagueoflegends.com/cdn/11.3.1/data/en_US/champion.json');
+  const championData = await axios.get('https://ddragon.leagueoflegends.com/cdn/11.4.1/data/en_US/champion.json');
   for(const entry in championData.data.data) {
     championData.data.data[championData.data.data[entry].key] = championData.data.data[entry]
   };

@@ -125,12 +125,12 @@ export async function sendClashTeams(teamName, opponentTeams) {
 }
 
 export async function getClashAnalysis(teamName, opponentTeamName) {
-  const result = await ajax.get(`https://bubbit-test-app.azurewebsites.net/clash/${teamName}/${opponentTeamName}`);
+  const result = await ajax.get(`http://localhost:8080/clash/${teamName}/${opponentTeamName}`);
   return result.data;
 }
 
 export async function updateClashTeam(teamName, opponentTeamName) {
-  const result = await ajax.get(`https://bubbit-test-app.azurewebsites.net/clash/update/${teamName}/${opponentTeamName}`);
+  const result = await ajax.get(`http://localhost:8080/clash/update/${teamName}/${opponentTeamName}`);
   return result.data;
 }
 

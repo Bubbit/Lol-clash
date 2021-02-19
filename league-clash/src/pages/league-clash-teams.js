@@ -57,6 +57,10 @@ export class LeagueClashTeams extends LitElement {
         height: calc(100vh - 130px);
       }
 
+      .remove {
+        height: 20px;
+      }
+
       .search-champs {
         overflow-y: scroll;
         height: calc(100vh - 230px);
@@ -133,6 +137,13 @@ export class LeagueClashTeams extends LitElement {
         padding: 12px;
       }
 
+      .comp-placeholder {
+        height: 45px;
+        width: 45px;
+        border-radius: 15px;
+        border: 1px solid ${grey};
+      }
+
       #addComp {
         margin-left: 10px;
       }
@@ -141,8 +152,8 @@ export class LeagueClashTeams extends LitElement {
         border-bottom: 1px solid ${gold};
         font-size: 15pt;
         display: grid;
-        grid-gap: 3px;
-        grid-template-columns: 1fr 45px 45px 45px 45px 45px;
+        grid-gap: 5px;
+        grid-template-columns: 1fr 50px 50px 50px 50px 50px 50px;
         padding-right: 10px;
         height: 28px;
       }
@@ -157,8 +168,8 @@ export class LeagueClashTeams extends LitElement {
       .comp-champs {
         font-size: 15pt;
         display: grid;
-        grid-gap: 3px;
-        grid-template-columns: 1fr 45px 45px 45px 45px 45px;
+        grid-gap: 5px;
+        grid-template-columns: 1fr 50px 50px 50px 50px 50px 50px;
         margin: 10px 0 20px 0;
         padding-right: 10px;
       }
@@ -247,19 +258,31 @@ export class LeagueClashTeams extends LitElement {
 
   addComp() {
     const comp = this.shadowRoot.getElementById('addComp').value;
-    window.database.ref(`${this.team}_comps/${comp}`).set({
-      top: [],
-      jungle: [],
-      mid: [],
-      bot: [],
-      support: [],
-      name: comp
-    });
+    if(comp) {
+      window.database.ref(`${this.team}_comps/${comp}`).set({
+        top: [],
+        jungle: [],
+        mid: [],
+        bot: [],
+        support: [],
+        name: comp
+      });
+    }
+  }
+
+  removeComp(comp) {
+    if (window.confirm(`You sure you want to delete ${comp}?`)) {
+      window.database.ref(`${this.team}_comps/${comp}`).remove()
+    }
   }
 
   addChampToComp(event) {
     event.preventDefault();
-    const champ = event.dataTransfer.getData("text");
+    let champ = event.dataTransfer.getData("text");
+    if(champ.indexOf('.')) {
+      const splitChamp = champ.split('/');
+      champ = splitChamp[splitChamp.length - 1].split('.')[0];
+    };
     const data = event.target.id.split('-');
     const compInfo = this.compsData[data[0]];
     if(compInfo && !(compInfo[data[1]] && compInfo[data[1]].some(champName => champName === champ))) {
@@ -270,21 +293,23 @@ export class LeagueClashTeams extends LitElement {
     }
   }
 
-  removeChampFromComp(champ, comp, event, role) {
+  removeChampFromComp(champ, comp, role) {
     const compInfo = this.compsData[comp];
-    if(event.button) {
-      if(compInfo[role] && compInfo[role].some(champName => champName === champ)) {
-        const newChamps = compInfo[role].filter(champName => champ !== champName);
-        const update = {}
-        update[role] = newChamps
-        window.database.ref(`${this.team}_comps/${comp}`).update(update);
-      }
+    if(compInfo[role] && compInfo[role].some(champName => champName === champ)) {
+      const newChamps = compInfo[role].filter(champName => champ !== champName);
+      const update = {}
+      update[role] = newChamps
+      window.database.ref(`${this.team}_comps/${comp}`).update(update);
     }
   }
 
   addChampToPlayer(event) {
     event.preventDefault();
-    const champ = event.dataTransfer.getData("text");
+    let champ = event.dataTransfer.getData("text");
+    if(champ.indexOf('.')) {
+      const splitChamp = champ.split('/');
+      champ = splitChamp[splitChamp.length - 1].split('.')[0];
+    };
     const data = event.target.id || event.path[1].id;
     const dataSplit = data.split('-');
     const playerInfo = this.playersData[dataSplit[0]];
@@ -354,7 +379,7 @@ export class LeagueClashTeams extends LitElement {
       this.comps = this.compsData ? Object.keys(this.compsData) : [];
     });
 
-    const championData = await axios.get('https://ddragon.leagueoflegends.com/cdn/11.3.1/data/en_US/champion.json');
+    const championData = await axios.get('https://ddragon.leagueoflegends.com/cdn/11.4.1/data/en_US/champion.json');
     this.originalChamps = championData.data.data;
     this.champs = Object.keys(this.originalChamps);
     this.filteredChamps = this.champs;
@@ -403,13 +428,16 @@ export class LeagueClashTeams extends LitElement {
         <div class="comps-col">
           <div class="comps-header">
             <h1>Team Compositions</h1>
-            <input id="addComp" placeholder="Add Comp"/>
+            <input id="addComp" placeholder="Add Comp" required/>
             <button @click=${this.addComp}>Add Comp</button>
           </div>
           <div class="comps">
             ${this.comps && this.comps.map(comp => html`
               <div class="comp-header" id=${comp}>
                 <span>${this.compsData[comp].name}</span>
+                <svg class="role" @click=${() => this.removeComp(comp)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
                 <img class="role" src="./../assets/positions/Top_Icon.png"/>
                 <img class="role" src="./../assets/positions/Jungle_Icon.png"/>
                 <img class="role" src="./../assets/positions/Mid_Icon.png"/>
@@ -418,29 +446,30 @@ export class LeagueClashTeams extends LitElement {
               </div>
               <div class="comp-champs">
                 <span></span>
-                <div id="${comp}-top" @drop=${this.addChampToComp} @dragover=${this.allowDrop}>
+                <span></span>
+                <div id="${comp}-top" class=${!this.compsData[comp].top ? "comp-placeholder" : ""} @drop=${this.addChampToComp} @dragover=${this.allowDrop}>
                   ${this.compsData[comp].top && this.compsData[comp].top.map(champ => html`
-                    <img src="./../assets/champion/${champ.replace(/\s/g, '')}.png" @click=${(event) => this.removeChampFromComp(champ, comp, event, 'top')}>
+                    <img src="./../assets/champion/${champ.replace(/\s/g, '')}.png" @click=${() => this.removeChampFromComp(champ, comp, 'top')}>
                   `)}
                 </div>
-                <div id="${comp}-jungle" @drop=${this.addChampToComp} @dragover=${this.allowDrop}>
+                <div id="${comp}-jungle" class=${!this.compsData[comp].jungle ? "comp-placeholder" : ""} @drop=${this.addChampToComp} @dragover=${this.allowDrop}>
                   ${this.compsData[comp].jungle && this.compsData[comp].jungle.map(champ => html`
-                    <img src="./../assets/champion/${champ.replace(/\s/g, '')}.png" @click=${(event) => this.removeChampFromComp(champ, comp, event, 'jungle')}>
+                    <img src="./../assets/champion/${champ.replace(/\s/g, '')}.png" @click=${() => this.removeChampFromComp(champ, comp, 'jungle')}>
                   `)}
                 </div>
-                <div id="${comp}-mid" @drop=${this.addChampToComp} @dragover=${this.allowDrop}>
+                <div id="${comp}-mid" class=${!this.compsData[comp].mid ? "comp-placeholder" : ""} @drop=${this.addChampToComp} @dragover=${this.allowDrop}>
                   ${this.compsData[comp].mid && this.compsData[comp].mid.map(champ => html`
-                    <img src="./../assets/champion/${champ.replace(/\s/g, '')}.png" @click=${(event) => this.removeChampFromComp(champ, comp, event, 'mid')}>
+                    <img src="./../assets/champion/${champ.replace(/\s/g, '')}.png" @click=${() => this.removeChampFromComp(champ, comp, 'mid')}>
                   `)}
                 </div>
-                <div id="${comp}-bot" @drop=${this.addChampToComp} @dragover=${this.allowDrop}>
+                <div id="${comp}-bot" class=${!this.compsData[comp].bot ? "comp-placeholder" : ""} @drop=${this.addChampToComp} @dragover=${this.allowDrop}>
                   ${this.compsData[comp].bot && this.compsData[comp].bot.map(champ => html`
-                    <img src="./../assets/champion/${champ.replace(/\s/g, '')}.png" @click=${(event) => this.removeChampFromComp(champ, comp, event, 'bot')}>
+                    <img src="./../assets/champion/${champ.replace(/\s/g, '')}.png" @click=${() => this.removeChampFromComp(champ, comp, 'bot')}>
                   `)}
                 </div>
-                <div id="${comp}-support" @drop=${this.addChampToComp} @dragover=${this.allowDrop}>
+                <div id="${comp}-support" class=${!this.compsData[comp].support ? "comp-placeholder" : ""} @drop=${this.addChampToComp} @dragover=${this.allowDrop}>
                   ${this.compsData[comp].support && this.compsData[comp].support.map(champ => html`
-                    <img src="./../assets/champion/${champ.replace(/\s/g, '')}.png" @click=${(event) => this.removeChampFromComp(champ, comp, event, 'support')}>
+                    <img src="./../assets/champion/${champ.replace(/\s/g, '')}.png" @click=${() => this.removeChampFromComp(champ, comp, 'support')}>
                   `)}
                 </div>
               </div>

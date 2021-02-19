@@ -6,6 +6,7 @@ import '@lion/fieldset/lion-fieldset.js';
 import '@lion/button/lion-button.js';
 import './../components/player-new';
 import './../components/match-data';
+import './../components/match-bans';
 import { Required } from '@lion/form-core';
 import { sendClashTeams, getClashAnalysis, updateClashTeam, deleteClashTeam } from './../util/api';
 
@@ -37,7 +38,8 @@ export class LeagueClashTeamScout extends LitElement {
       }
 
       #clash-opponents > div {
-        margin: 0 5px;
+        margin: 5px 5px;
+        text-align: center;
       }
 
       #selected-team {
@@ -112,7 +114,7 @@ export class LeagueClashTeamScout extends LitElement {
   }
 
   async _getAnalysis(squadName, selectedTeam) {
-    console.log('get it')
+    console.log('get it', squadName);
     const analysis = await getClashAnalysis(this.team, squadName);
     selectedTeam.players.forEach((player) => player.analysis = analysis.find((playerAnalysis) => playerAnalysis.name === player.summoner.name));
     this.selectedTeam = selectedTeam;
@@ -125,13 +127,14 @@ export class LeagueClashTeamScout extends LitElement {
       html`
       <div id="clash-opponents">
         ${Object.keys(this.opponents).map((opponent) => html`<div @click=${() => { this._getAnalysis(this.opponents[opponent].name, this.opponents[opponent])}}>
-          <img src="http://ddragon.leagueoflegends.com/cdn/11.1.1/img/profileicon/${this.opponents[opponent].iconId}.png">
+          <img src="http://ddragon.leagueoflegends.com/cdn/11.4.1/img/profileicon/${this.opponents[opponent].iconId}.png">
           ${this.opponents[opponent].name}        
         </div>`)}
         <button @click=${this._deleteOpponents}>Delete all info</button>
       </div>
       ${this.selectedTeam ? html`
         <button @click=${this._updateSelectedTeam}>Update</button>
+        <match-bans .team=${this.team} .opponent=${this.selectedTeam.name}></match-bans>
         <h3>${this.selectedTeam.name}</h3>
         <div id="selected-team">
           ${this.selectedTeam.players.map((player) => html`
