@@ -255,7 +255,7 @@ const getTeam = async (playerName, teamName) => {
   }
 
   const db = config.getDatabase();
-  db.ref(`${teamName}/opponents/${team.name}-${playerName}`).set(team);
+  db.ref(`${teamName}/opponents/${team.name}`).set(team);
   return team;
 }
 
