@@ -8,29 +8,29 @@ on:
     branches:
       - bub-new-squad
 
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./app-engine
+# jobs:
+#   build-and-deploy:
+#     runs-on: ubuntu-latest
+#     defaults:
+#       run:
+#         working-directory: ./app-engine
 
-    steps:
-    - uses: actions/checkout@master
+#     steps:
+#     - uses: actions/checkout@master
 
-    - name: Set up Node.js version
-      uses: actions/setup-node@v1
-      with:
-        node-version: '14.x'
+#     - name: Set up Node.js version
+#       uses: actions/setup-node@v1
+#       with:
+#         node-version: '14.x'
 
-    - name: npm install, build, and test
-      run: |
-        npm install
+#     - name: npm install, build, and test
+#       run: |
+#         npm install
 
-    - name: 'Deploy to Azure Web App'
-      uses: azure/webapps-deploy@v2
-      with:
-        app-name: 'bubbit-test-app'
-        slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_f81774c0157c4c37a10738f1705ee34c }}
-        package: ./app-engine
+#     - name: 'Deploy to Azure Web App'
+#       uses: azure/webapps-deploy@v2
+#       with:
+#         app-name: 'bubbit-test-app'
+#         slot-name: 'production'
+#         publish-profile: ${{ secrets.AzureAppService_PublishProfile_f81774c0157c4c37a10738f1705ee34c }}
+#         package: ./app-engine
