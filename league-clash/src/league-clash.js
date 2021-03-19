@@ -20,15 +20,7 @@ const setup = async function() {
   const outlet = document.getElementById('outlet');
   const router = new Router(outlet);
 
-  var firebaseConfig = {
-    apiKey: "AIzaSyBBqJUlmzBWTC7HQa2VYj6p39ErHxbnZyo",
-    authDomain: "league-clash-7a1b0.firebaseapp.com",
-    databaseURL: "https://league-clash-7a1b0.firebaseio.com",
-    projectId: "league-clash-7a1b0",
-    storageBucket: "league-clash-7a1b0.appspot.com",
-    messagingSenderId: "689586244199",
-    appId: "1:689586244199:web:53cc3464eea09ac29aa2c2"
-  };
+
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 
