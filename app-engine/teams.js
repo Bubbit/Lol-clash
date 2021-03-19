@@ -25,65 +25,220 @@ const allowedQueues = [400, 420, 430, 440, 700];
 
 const getTeam = async (playerName, teamName) => {
   const mainKey = config.mainKey();
-  // Get captain
+  console.log(mainKey);
   const captain = await playerService.getSummonerData(playerName);
   // Get clashID
+
+  console.log(captain);
   const clashID = await fetch(`https://euw1.api.riotgames.com/lol/clash/v1/players/by-summoner/${captain.id}?api_key=${mainKey}`).then(res => res.json());
-  // // Get full team
+  console.log(clashID);
   const clashTeam = await fetch(`https://euw1.api.riotgames.com/lol/clash/v1/teams/${clashID[0].teamId}?api_key=${mainKey}`).then(res => res.json());
+  
   // let clashTeam;
   // if(playerName === 'bubbit') {
   //   clashTeam = {
   //     players: [{
-  //       id: '-aCtSbhMWy1JufsAjA1qoIl798XfcuMCTw7kdng0kZOhpQA',
+  //       summonerId: '-aCtSbhMWy1JufsAjA1qoIl798XfcuMCTw7kdng0kZOhpQA',
   //       position: 'TOP'
   //     },
   //     {
-  //       id: 'yZgCwPa2ngGbInI17Kz8t3T567b1pKgjMfbl4pzA_Jfsfow',
+  //       summonerId: 'yZgCwPa2ngGbInI17Kz8t3T567b1pKgjMfbl4pzA_Jfsfow',
   //       position: 'UTILITY'
   //     },
   //     {
-  //       id: 'GbG-Eq4EzJ3WmkFTd2s11FTqQH2nSOtvIwU3A2RNi0W-2Bw',
+  //       summonerId: 'GbG-Eq4EzJ3WmkFTd2s11FTqQH2nSOtvIwU3A2RNi0W-2Bw',
   //       position: 'MIDDLE'
   //     },
   //     {
-  //       id: 'ioONalJKPn2Idi8s_T0WoKaDgLT3PlSGtJUgs_csudjnPq9y',
+  //       summonerId: 'ioONalJKPn2Idi8s_T0WoKaDgLT3PlSGtJUgs_csudjnPq9y',
   //       position: 'UNSELECTED'
   //     },
   //     {
-  //       id: 'F4U7ncZDHzrqa6o0qFhvZUHey3g0dcNs-JyhrSx30QbuI4Y',
+  //       summonerId: 'F4U7ncZDHzrqa6o0qFhvZUHey3g0dcNs-JyhrSx30QbuI4Y',
   //       position: 'JUNGLE'
   //     }],
   //     name: 'potatoSquad',
   //     iconId: 4831
   //   }
-  // } else {
+  // } else if (playerName === 'thegreyspy') {
   //   clashTeam = {
   //     players: [{
-  //       id: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
+  //       summonerId: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
   //       position: 'TOP'
   //     },
   //     {
-  //       id: 'QXRdwQoFavtBgZGy39L8fVPDQXfjVEhmq_LvB78bJE_vUS0',
+  //       summonerId: 'QXRdwQoFavtBgZGy39L8fVPDQXfjVEhmq_LvB78bJE_vUS0',
   //       position: 'UTILITY'
   //     },
   //     {
-  //       id: 'V-a4J5lPCWJikhMVddxnVoKAk24Fgf2wzjD3LvRN2673-c09',
+  //       summonerId: 'V-a4J5lPCWJikhMVddxnVoKAk24Fgf2wzjD3LvRN2673-c09',
   //       position: 'MIDDLE'
   //     },
   //     {
-  //       id: 'tMUIhaXoqyyuf0aG7GZF5wlMnWDIj90-_Q2cg2DlfgphAZV9',
+  //       summonerId: 'tMUIhaXoqyyuf0aG7GZF5wlMnWDIj90-_Q2cg2DlfgphAZV9',
   //       position: 'UNSELECTED'
   //     },
   //     {
-  //       id: 'dGX-B6Z6llF06OYWSxISqMSuN9y8xqTi-6KVcjf2ckG5xSM',
+  //       summonerId: 'dGX-B6Z6llF06OYWSxISqMSuN9y8xqTi-6KVcjf2ckG5xSM',
+  //       position: 'JUNGLE'
+  //     }],
+  //     name: 'ZiggsSquad',
+  //     iconId: 4281
+  //   }
+  // } else if (playerName === 'panthersoap') {
+  //   clashTeam = {
+  //     players: [{
+  //       summonerId: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
+  //       position: 'TOP'
+  //     },
+  //     {
+  //       summonerId: 'QXRdwQoFavtBgZGy39L8fVPDQXfjVEhmq_LvB78bJE_vUS0',
+  //       position: 'UTILITY'
+  //     },
+  //     {
+  //       summonerId: 'V-a4J5lPCWJikhMVddxnVoKAk24Fgf2wzjD3LvRN2673-c09',
+  //       position: 'MIDDLE'
+  //     },
+  //     {
+  //       summonerId: 'tMUIhaXoqyyuf0aG7GZF5wlMnWDIj90-_Q2cg2DlfgphAZV9',
+  //       position: 'UNSELECTED'
+  //     },
+  //     {
+  //       summonerId: 'dGX-B6Z6llF06OYWSxISqMSuN9y8xqTi-6KVcjf2ckG5xSM',
+  //       position: 'JUNGLE'
+  //     }],
+  //     name: 'vapeSquad',
+  //     iconId: 4281
+  //   }
+  // } else if (playerName === 'jemjem') {
+  //   clashTeam = {
+  //     players: [{
+  //       summonerId: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
+  //       position: 'TOP'
+  //     },
+  //     {
+  //       summonerId: 'QXRdwQoFavtBgZGy39L8fVPDQXfjVEhmq_LvB78bJE_vUS0',
+  //       position: 'UTILITY'
+  //     },
+  //     {
+  //       summonerId: 'V-a4J5lPCWJikhMVddxnVoKAk24Fgf2wzjD3LvRN2673-c09',
+  //       position: 'MIDDLE'
+  //     },
+  //     {
+  //       summonerId: 'tMUIhaXoqyyuf0aG7GZF5wlMnWDIj90-_Q2cg2DlfgphAZV9',
+  //       position: 'UNSELECTED'
+  //     },
+  //     {
+  //       summonerId: 'dGX-B6Z6llF06OYWSxISqMSuN9y8xqTi-6KVcjf2ckG5xSM',
+  //       position: 'JUNGLE'
+  //     }],
+  //     name: 'asianSquad',
+  //     iconId: 4281
+  //   }
+  // } else if (playerName === 'renee') {
+  //   clashTeam = {
+  //     players: [{
+  //       summonerId: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
+  //       position: 'TOP'
+  //     },
+  //     {
+  //       summonerId: 'QXRdwQoFavtBgZGy39L8fVPDQXfjVEhmq_LvB78bJE_vUS0',
+  //       position: 'UTILITY'
+  //     },
+  //     {
+  //       summonerId: 'V-a4J5lPCWJikhMVddxnVoKAk24Fgf2wzjD3LvRN2673-c09',
+  //       position: 'MIDDLE'
+  //     },
+  //     {
+  //       summonerId: 'tMUIhaXoqyyuf0aG7GZF5wlMnWDIj90-_Q2cg2DlfgphAZV9',
+  //       position: 'UNSELECTED'
+  //     },
+  //     {
+  //       summonerId: 'dGX-B6Z6llF06OYWSxISqMSuN9y8xqTi-6KVcjf2ckG5xSM',
   //       position: 'JUNGLE'
   //     }],
   //     name: 'bonkSquad',
   //     iconId: 4281
   //   }
+  // } else if (playerName === 'julia') {
+  //   clashTeam = {
+  //     players: [{
+  //       summonerId: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
+  //       position: 'TOP'
+  //     },
+  //     {
+  //       summonerId: 'QXRdwQoFavtBgZGy39L8fVPDQXfjVEhmq_LvB78bJE_vUS0',
+  //       position: 'UTILITY'
+  //     },
+  //     {
+  //       summonerId: 'V-a4J5lPCWJikhMVddxnVoKAk24Fgf2wzjD3LvRN2673-c09',
+  //       position: 'MIDDLE'
+  //     },
+  //     {
+  //       summonerId: 'tMUIhaXoqyyuf0aG7GZF5wlMnWDIj90-_Q2cg2DlfgphAZV9',
+  //       position: 'UNSELECTED'
+  //     },
+  //     {
+  //       summonerId: 'dGX-B6Z6llF06OYWSxISqMSuN9y8xqTi-6KVcjf2ckG5xSM',
+  //       position: 'JUNGLE'
+  //     }],
+  //     name: 'QuinnSquad',
+  //     iconId: 4281
+  //   }
+  // } else if (playerName === 'tom') {
+  //   clashTeam = {
+  //     players: [{
+  //       summonerId: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
+  //       position: 'TOP'
+  //     },
+  //     {
+  //       summonerId: 'QXRdwQoFavtBgZGy39L8fVPDQXfjVEhmq_LvB78bJE_vUS0',
+  //       position: 'UTILITY'
+  //     },
+  //     {
+  //       summonerId: 'V-a4J5lPCWJikhMVddxnVoKAk24Fgf2wzjD3LvRN2673-c09',
+  //       position: 'MIDDLE'
+  //     },
+  //     {
+  //       summonerId: 'tMUIhaXoqyyuf0aG7GZF5wlMnWDIj90-_Q2cg2DlfgphAZV9',
+  //       position: 'UNSELECTED'
+  //     },
+  //     {
+  //       summonerId: 'dGX-B6Z6llF06OYWSxISqMSuN9y8xqTi-6KVcjf2ckG5xSM',
+  //       position: 'JUNGLE'
+  //     }],
+  //     name: 'JungleSquad',
+  //     iconId: 4281
+  //   }
+  // } else if (playerName === 'rob') {
+  //   clashTeam = {
+  //     players: [{
+  //       summonerId: '4F8As0hZUNu8ORV3jC5Zo7KzuSLYo-vLcf4HkWg8x47G5Eo',
+  //       position: 'TOP'
+  //     },
+  //     {
+  //       summonerId: 'QXRdwQoFavtBgZGy39L8fVPDQXfjVEhmq_LvB78bJE_vUS0',
+  //       position: 'UTILITY'
+  //     },
+  //     {
+  //       summonerId: 'V-a4J5lPCWJikhMVddxnVoKAk24Fgf2wzjD3LvRN2673-c09',
+  //       position: 'MIDDLE'
+  //     },
+  //     {
+  //       summonerId: 'tMUIhaXoqyyuf0aG7GZF5wlMnWDIj90-_Q2cg2DlfgphAZV9',
+  //       position: 'UNSELECTED'
+  //     },
+  //     {
+  //       summonerId: 'dGX-B6Z6llF06OYWSxISqMSuN9y8xqTi-6KVcjf2ckG5xSM',
+  //       position: 'JUNGLE'
+  //     }],
+  //     name: 'BrotherSquad',
+  //     iconId: 4281
+  //   }
   // }
-  
+
+  console.log(playerName);
+  console.log(clashTeam);
 
   const players = clashTeam.players.sort((player1, player2) => positionOrder[player1.position] - positionOrder[player2.position]);
 
@@ -100,7 +255,7 @@ const getTeam = async (playerName, teamName) => {
   }
 
   const db = config.getDatabase();
-  db.ref(`${teamName}/opponents/${clashTeam.name}`).set(team);
+  db.ref(`${teamName}/opponents/${team.name}`).set(team);
   return team;
 }
 
@@ -306,10 +461,10 @@ const analyzeSquad = (teamName) => {
         playerData.statsOverall.averageAssists = playerData.statsOverall.assists / playerData.statsOverall.total;
         playerData.statsOverall.kda = (playerData.statsOverall.averageKills + playerData.statsOverall.averageAssists) / playerData.statsOverall.averageDeaths;
         playerData.statsOverall.against.forEach((champ) => champ.winRate = champ.wins * 100 / champ.total);
-        playerData.statsOverall.against = playerData.statsOverall.against.sort((a, b) => a.winRate - b.winRate).sort((a, b) => b.total - a.total);
+        playerData.statsOverall.against = playerData.statsOverall.against.sort((a, b) => b.total - a.total).sort((a, b) => a.winRate - b.winRate);
         playerData.statsPerChampion.forEach((champ) => {
           champ.against.forEach((againstChamp) => againstChamp.winRate = againstChamp.wins * 100 / againstChamp.total);
-          champ.against = champ.against.sort((a, b) => a.winRate - b.winRate).sort((a, b) => b.total - a.total);
+          champ.against = champ.against.sort((a, b) => b.total - a.total).sort((a, b) => a.winRate - b.winRate);
           champ.winRate = champ.wins * 100 / champ.total;
         });
         playerData.statsPerChampion = playerData.statsPerChampion.sort((a, b) => b.winRate - a.winRate).sort((a, b) => b.total - a.total);

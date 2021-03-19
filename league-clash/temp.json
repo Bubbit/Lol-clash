@@ -1,0 +1,13 @@
+{
+    "steps": [
+        {
+            "stepId": 0,
+            "question/action": "enter a forest spot a boar",
+            "options": [
+                { "answer": "Ignore", "step": 5 },
+                { "answer": "Hunt", "step": 2}
+            ],
+            "backgroundImage": "./"
+        }
+    ]
+}

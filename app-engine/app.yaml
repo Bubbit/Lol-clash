@@ -13,4 +13,6 @@
 
 # [START gae_quickstart_yaml]
 runtime: nodejs14
+resources:
+  memory_gb: 2.3
 # [END gae_quickstart_yaml]

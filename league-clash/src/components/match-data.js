@@ -206,7 +206,7 @@ export class MatchData extends LitElement {
       ${this.teamMembers.map(player => html`
         <div class="player">
           <img src="./../assets/champion/${window.champList[player.championId].name.replace(/\s/g, '')}.png">
-          ${player.timeline.lane !== 'NONE' ? html`<img src="./../assets/ranked-positions/Position_Gold-${player.timeline.lane}.png">` : html`<img src="./../assets/lunar_revel2019_pig.png">`}
+          ${player.timeline.lane !== 'NONE' ? html`<img src="./../assets/ranked-positions/PositionGold-${player.timeline.lane}.png">` : html`<img src="./../assets/lunar_revel2019_pig.png">`}
           <p>${this.match.matchData.participantIdentities[player.participantId - 1].player.summonerName}</p>
           <div>${player.stats.kills} / ${player.stats.deaths} / ${player.stats.assists}</div>
           <p>Vision score: ${player.stats.visionScore}</p>

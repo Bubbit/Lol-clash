@@ -1,14 +1,7 @@
-// Config class
-// Constructor()
-
-// get mainKey()
-
-// get apiKey()
-
-// set apiKey()
 const admin = require('firebase-admin');
-const serviceAccount = require('./data/serviceAccountKey.json');
+const serviceAccount = require('./serviceAccountKey.json');
 
+console.log(serviceAccount);
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: 'https://league-clash-7a1b0.firebaseio.com/'
@@ -22,6 +15,7 @@ class Config {
     configRef.on('value', async (snapshot) =>{
       this.config = snapshot.val();
       if(this.config.keys) {
+        this.config.keys = this.config.keys.filter(Boolean);
         this.resetKeys(this.config.keys);
       }
     });

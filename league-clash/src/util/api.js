@@ -8,18 +8,23 @@ class LeagueAPI  {
   constructor() {
     this.tokens = [
     {
-      key: 'RGAPI-8917a711-f24a-480d-bcee-af04c324bd96',
+      key: 'RGAPI-56350441-2ab2-42d5-801c-3c021e642169',
       calls: 0,
       lastUsed: Date.now()
     },
     {
-      key: 'RGAPI-578d07f4-7303-4662-b793-f16cea814d22',
+      key: 'RGAPI-b2d23db6-5bf5-431e-b2ee-8180f104792f',
       calls: 0,
       lastUsed: Date.now()
     },
+    {
+      key: 'RGAPI-f556ee3f-6aed-4324-af25-f06dacd3b8a0',
+      calls: 0,
+      lastUsed: Date.now()
+    }
   ];
     this.activeToken = this.tokens[0];
-    this.accountToken = 'RGAPI-659d9cbc-f3f2-4c9a-8930-003fb2463093';
+    this.accountToken = 'RGAPI-0eb9e6db-b4e5-43ea-94d0-739522edee4d';
   }
 
   setNewActiveToken() {
@@ -115,21 +120,21 @@ export async function getMasteryData(summonerID) {
 }
 
 export async function sendClashTeams(teamName, opponentTeams) {
-  const result = await ajax.post(`http://localhost:8080/clash/${teamName}/`, opponentTeams);
+  const result = await ajax.post(`https://bubbit-test-app.azurewebsites.net/clash/${teamName}/`, opponentTeams);
   console.log(result.data);
 }
 
 export async function getClashAnalysis(teamName, opponentTeamName) {
-  const result = await ajax.get(`http://localhost:8080/clash/${teamName}/${opponentTeamName}`);
+  const result = await ajax.get(`https://bubbit-test-app.azurewebsites.net/clash/${teamName}/${opponentTeamName}`);
   return result.data;
 }
 
 export async function updateClashTeam(teamName, opponentTeamName) {
-  const result = await ajax.get(`http://localhost:8080/clash/update/${teamName}/${opponentTeamName}`);
+  const result = await ajax.get(`https://bubbit-test-app.azurewebsites.net/clash/update/${teamName}/${opponentTeamName}`);
   return result.data;
 }
 
 export async function deleteClashTeam(teamName, opponentTeamName) {
-  const result = await ajax.get(`http://localhost:8080/clash/clean/${teamName}/${opponentTeamName}`);
+  const result = await ajax.get(`https://bubbit-test-app.azurewebsites.net/clash/clean/${teamName}/${opponentTeamName}`);
   return result.data;
 }
