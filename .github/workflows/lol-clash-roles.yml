@@ -23,6 +23,8 @@ jobs:
         run: mkdir ./dist && cp ./index.js ./dist/index.js
       - name: Install dependencies, Build application and Zip dist folder contents
         run: zip -qq -r -j ./bundle.zip ./dist/*
+      - name: test
+        run: ls -ltr 
       - name: deploy zip to aws lambda
         uses: appleboy/lambda-action@master
         with:
@@ -30,4 +32,4 @@ jobs:
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_region: ${{ secrets.AWS_REGION }}
           function_name: lol-clash-roles
-          zip_file: bundle.zip
+          zip_file: ./bundle.zip
