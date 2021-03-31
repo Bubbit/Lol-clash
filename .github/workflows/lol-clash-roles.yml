@@ -22,7 +22,7 @@ jobs:
       - name: build
         run: mkdir ./dist && cp ./index.js ./dist/index.js
       - name: Install dependencies, Build application and Zip dist folder contents
-        run: zip -qq -r -j ./bundle.zip ./*
+        run: zip -qq -r -j ./bundle.zip ./dist/*
       - name: deploy zip to aws lambda
         uses: appleboy/lambda-action@master
         with:
