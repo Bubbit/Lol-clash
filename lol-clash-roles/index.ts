@@ -8,7 +8,7 @@ export const handler: Handler = async (event: APIGatewayProxyEvent): Promise<API
 
     const response = {
         statusCode: 200,
-        body: JSON.stringify(`Hello from Bub from typescript - ${apiKey}! - ${event.queryStringParameters}`),
+        body: JSON.stringify(`Hello from Bub from typescript - ${apiKey}! - ${event.queryStringParameters.summonerName}`),
     };
     return response;
 };
