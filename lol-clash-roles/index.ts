@@ -1,9 +1,10 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResultV2, Handler } from 'aws-lambda';
+import { decryptSecret } from './utils';
 
 export const handler: Handler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResultV2> => {
     // TODO implement
 
-    const secret1 = process.env.FIRST_SECRET;
+    const secret1 = decryptSecret('FIRST_SECRET');
     const secret2 = process.env.SECOND_SECRET;
 
     const response = {
