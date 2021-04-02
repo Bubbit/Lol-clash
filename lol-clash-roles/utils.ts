@@ -1,5 +1,5 @@
 const AWS = require('aws-sdk');
-AWS.config.update({ region: 'us-west-2' });
+AWS.config.update({ region: 'eu-west-2' });
 const kms = new AWS.KMS();
 
 const decrypted = {};
