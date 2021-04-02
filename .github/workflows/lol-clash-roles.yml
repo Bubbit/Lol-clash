@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - bub-new-squad
+    paths:
+      - "lol-clash-roles/**"
 
 jobs:
   deploy_source:
