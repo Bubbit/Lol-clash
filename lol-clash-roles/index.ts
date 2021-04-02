@@ -4,12 +4,11 @@ import { decryptSecret } from './utils';
 export const handler: Handler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResultV2> => {
     // TODO implement
 
-    const secret1 = await decryptSecret('FIRST_SECRET');
-    const secret2 = process.env.SECOND_SECRET;
+    const apiKey = await decryptSecret('RIOT_API_KEY');
 
     const response = {
         statusCode: 200,
-        body: JSON.stringify(`Hello from Bub from typescript - ${secret1} - ${secret2}!`),
+        body: JSON.stringify(`Hello from Bub from typescript - ${apiKey}! - ${event.queryStringParameters}`),
     };
     return response;
 };
