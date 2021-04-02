@@ -3,8 +3,8 @@ import { APIGatewayProxyEvent, APIGatewayProxyResultV2, Handler } from 'aws-lamb
 export const handler: Handler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResultV2> => {
     // TODO implement
 
-    const secret1 = '[first secret]';
-    const secret2 = '[second secret]';
+    const secret1 = process.env.FIRST_SECRET;
+    const secret2 = process.env.SECOND_SECRET;
 
     const response = {
         statusCode: 200,
