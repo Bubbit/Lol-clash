@@ -26,8 +26,13 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
+      - name: npm install
+        env:
+          CI: true
+        run: |
+          npm ci
       - name: build
-        run: mkdir ./dist && cp ./index.js ./dist/index.js
+        run: npm run build
       - name: Install dependencies, Build application and Zip dist folder contents
         run: zip -j deploy.zip ./dist/*
       - name: deploy

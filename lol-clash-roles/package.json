@@ -1,0 +1,16 @@
+{
+  "name": "lol-clash-roles",
+  "version": "1.0.0",
+  "description": "lambda function to get clash roles",
+  "main": "index.ts",
+  "scripts": {
+    "build": "ncc build index.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.73",
+    "@vercel/ncc": "^0.27.0",
+    "typescript": "^4.2.3"
+  }
+}
