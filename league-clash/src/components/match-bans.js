@@ -25,34 +25,19 @@ export class MatchBans extends LitElement {
   async connectedCallback() {
     super.connectedCallback();
 
-    const championData = await axios.get('https://ddragon.leagueoflegends.com/cdn/11.4.1/data/en_US/champion.json');
-    this.originalChamps = championData.data.data;
+    this.originalChamps = window.champList;
     this.champs = Object.keys(this.originalChamps);
     this.chosenChamps = this.champs;
 
     this.round1Bans = [];
     this.round2Bans = [];
-
-    console.log(`${this.team} - ${this.opponent}`)
-    const teamRef = window.database.ref(`${this.team}/opponents/${this.opponent}/bans`);
-    teamRef.on('value', (snapshot) =>{
-      const bans = snapshot.val();
-      this.round1Bans = bans.round1 || [];
-      this.round2Bans = bans.round2 || [];
-    });
   }
 
   addBan(champion) {
     if(this.round1Bans.length < 3) {
       this.round1Bans.push(champion);
-      window.database.ref(`${this.team}/opponents/${this.opponent}/bans`).update({
-        round1: this.round1Bans
-      });
     } else {
       this.round2Bans.push(champion);
-      window.database.ref(`${this.team}/opponents/${this.opponent}/bans`).update({
-        round2: this.round2Bans
-      });
     }
     this.chosenChamps = this.chosenChamps.filter(champName => champName !== champion);
     this.champs = this.champs.filter(champName => champName !== champion);
@@ -70,10 +55,6 @@ export class MatchBans extends LitElement {
       this.champs.push(champion);
       this.champs.sort();
     }
-    window.database.ref(`${this.team}/opponents/${this.opponent}/bans`).update({
-      round1: this.round1Bans,
-      round2: this.round2Bans
-    });
   }
 
   filterChamps() {

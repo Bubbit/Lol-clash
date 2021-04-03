@@ -2,7 +2,14 @@ import { LitElement, html, css } from 'lit-element';
 import './../components/player';
 import './../components/match-data';
 import './../components/match-bans';
-import { getClashId, getClashTeam, getSummonerByName } from './../util/api';
+import { 
+  darkGrey,
+  gold,
+  grey,
+  offWhite,
+} from './../colors';
+import { nothing } from '@lion/core';
+import { ajax } from '@lion/ajax';
 
 const positionOrder = {
   TOP: 0,
@@ -15,19 +22,17 @@ const positionOrder = {
 export class LeagueClashScouting extends LitElement {
   static get properties() {
     return {
-      championMasteryDone: { type: Boolean },
-      analysesDone: { type: Boolean },
-      playerName1: { type: String },
-      selectedMatch: { type: Object }
+      players: { type: Object },
+      selectedPlayerName: { type: String }
     };
   }
 
   static get styles() {
     return css`
       h1 {
-        font-size: 80px;
-        color: orange;
-        -webkit-text-stroke: 2px black;
+        margin-top: 0px;
+        padding: 0 10px;
+        font-family: Segoe UI Italic;
       }
 
       h2 {
@@ -54,6 +59,12 @@ export class LeagueClashScouting extends LitElement {
         padding: 5px 15px;
       }
 
+      .submit {
+        background-color: #1F2335;
+        border: 1px solid #8C6834;
+        margin: auto;
+      }
+
       .search-box {
         display: flex;
         justify-content: center;
@@ -69,66 +80,76 @@ export class LeagueClashScouting extends LitElement {
         width: 20%;
       }
 
-      .selectedMatch {
-        width: 750px;
-        margin: 0 auto;
+      iframe {
+        width: 100%;
+        height: 800px;
+      }
+
+      button {
+        height: 34px;
+        border-radius: 5px;
+        padding: 5px 15px;
+      }
+
+      input {
+        border: 0;
+        height: 24px;
+        width: 210px;
+        background-color: ${darkGrey};
+        border-radius: 0;
+        color: ${offWhite};
+        font-family: Segoe UI italic;
+        padding: 5px;
+      }
+
+      input::placeholder {
+        color: ${grey};
+        font-family: Segoe UI italic;
       }
     `
-  }
-
-  async getData() {
-    this.playerName = this.shadowRoot.getElementById('player-name').value;
-
-    const summonerData = await getSummonerByName(this.playerName);
-    console.log(summonerData);
-    const clashTeamID = await getClashId(summonerData.id);
-    console.log(clashTeamID);
-    this.clashTeam = await getClashTeam(clashTeamID[0].teamId);
-
-    console.log(this.clashTeam);
-
-    this.players = this.clashTeam.players.sort((player1, player2) => positionOrder[player1.position] - positionOrder[player2.position]);
-
-    this.championMasteryDone = true;
-    this.requestUpdate();
   }
 
   constructor() {
     super();
 
-    this.addEventListener('match', (event) => {
-      this.selectedMatch = false;
-      this.requestUpdate();
+    this.addEventListener('opgg', (event) => {
+      this.selectedPlayerName = undefined;
 
       setTimeout(() => {
-        this.selectedMatch = event.detail.gameData;
-        this.requestUpdate();
+        this.selectedPlayerName = event.detail.playerName;
       });
     });
+  }
+
+  async getData() {
+    const playerName = this.shadowRoot.getElementById('player-name').value;
+
+    const result = await ajax.get(`https://uawjfhb1o5.execute-api.eu-west-2.amazonaws.com/default/lol-clash-roles?summonerName=${playerName}`);
+
+    this.clashTeam = result.data;
+
+    this.players = this.clashTeam.players.sort((player1, player2) => positionOrder[player1.position] - positionOrder[player2.position]);
   }
 
   render() {
     return html`
       ${this.players ? 
         html`
-        <match-bans></match-bans>
-        <h2 style="text-align: center;">${this.clashTeam.name}</h2>
-        <div class="players">
-          ${this.players.map(player => html`
-            <league-player .player=${player}></league-player>
-          `)}
-        </div>
+          <match-bans></match-bans>
+          <h1 style="text-align: center;">${this.clashTeam.name}</h1>
+          <div class="players">
+            ${this.players.map(player => html`
+              <league-player .player=${player}></league-player>
+            `)}
+          </div>
         ` : html`
-      <div class="search-box">
-        <input placeholder="Player" id="player-name"/>
-        <button @click=${this.getData}>Analyse</button>
-      </div>
+          <div class="search-box">
+            <input placeholder="Player" id="player-name"/>
+            <button class=".submit" @click=${this.getData}>Search</button>
+          </div>
       `} 
-      </div>
-      ${this.selectedMatch ?
-        html`<div class="selectedMatch">
-          <match-data .match=${this.selectedMatch}></match-data>
-        </div>` : html``
+      ${this.selectedPlayerName ? 
+        html`<iframe .src="https://euw.op.gg/summoner/userName=${this.selectedPlayerName}"></iframe>` : nothing 
       }
     `;
   }

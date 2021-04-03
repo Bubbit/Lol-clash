@@ -9,10 +9,11 @@ import firebase from "firebase/app";
 import "firebase/database";
 
 const getChampionData = async function() {
-  const championData = await axios.get('https://ddragon.leagueoflegends.com/cdn/11.4.1/data/en_US/champion.json');
-  for(const entry in championData.data.data) {
-    championData.data.data[championData.data.data[entry].key] = championData.data.data[entry]
-  };
+  const leagueVersions = await axios.get('https://ddragon.leagueoflegends.com/api/versions.json');
+  const championData = await axios.get(`https://ddragon.leagueoflegends.com/cdn/${leagueVersions.data[0]}/data/en_US/champion.json`);
+  // for(const entry in championData.data.data) {
+  //   championData.data.data[championData.data.data[entry].key] = championData.data.data[entry]
+  // };
   return championData.data.data;
 }
 
@@ -20,17 +21,16 @@ const setup = async function() {
   const outlet = document.getElementById('outlet');
   const router = new Router(outlet);
 
-
   // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
+  // firebase.initializeApp(firebaseConfig);
 
-  window.database = firebase.database();
+  // window.database = firebase.database();
   
   router.setRoutes([
     {path: '/', component: 'league-clash-home'},
     {path: '/scouting', component: 'league-clash-scouting'},
-    {path: '/teams/:teamid', component: 'league-clash-teams'},
-    {path: '/scouting-new/:teamid', component: 'league-clash-team-scout'},
+    // {path: '/teams/:teamid', component: 'league-clash-teams'},
+    // {path: '/scouting-new/:teamid', component: 'league-clash-team-scout'},
     {path: '(.*)', component: 'league-clash-404'},
   ])
   
