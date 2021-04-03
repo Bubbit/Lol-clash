@@ -11,7 +11,12 @@ export const handler: Handler = async (event: APIGatewayProxyEvent): Promise<API
     const clashID = await fetch(`https://euw1.api.riotgames.com/lol/clash/v1/players/by-summoner/${summonerdata.id}?api_key=${apiKey}`).then(res => res.json());
     // Get teamsetup
     const clashTeam = await fetch(`https://euw1.api.riotgames.com/lol/clash/v1/teams/${clashID[0].teamId}?api_key=${apiKey}`).then(res => res.json());
-    
+
+    for (const player of clashTeam.players) {
+        const playerInfo = await fetch(`https://euw1.api.riotgames.com//lol/summoner/v4/summoners/${player.summonerId}?api_key=${apiKey}`).then(res => res.json());
+        player.playerName = playerInfo.name;
+        player.summonerLevel = playerInfo.summonerLevel;
+    }
     const response = {
         statusCode: 200,
         body: JSON.stringify(clashTeam),
