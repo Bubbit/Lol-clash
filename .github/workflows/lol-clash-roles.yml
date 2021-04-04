@@ -3,7 +3,9 @@ name: lambda-depl
 on:
   push:
     branches:
-      - master
+      - bub-new-squad
+    paths:
+      - "lol-clash-roles/**"
 
 jobs:
   deploy_source:
@@ -14,20 +16,26 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./league-clash
+        working-directory: ./lol-clash-roles
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1.4.2
+      - uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node-version }}
+            node-version: '14'
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+      - name: npm install
+        env:
+          CI: true
+        run: |
+          npm ci
+      - name: build
+        run: npm run build
       - name: Install dependencies, Build application and Zip dist folder contents
-        run: zip -qq -r -j ./bundle.zip ./*
-      - name: deploy zip to aws lambda
-        uses: appleboy/lambda-action@master
-        with:
-          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws_region: ${{ secrets.AWS_REGION }}
-          function_name: lol-clash-roles
-          zip_file: bundle.zip
+        run: zip -j deploy.zip ./dist/*
+      - name: deploy
+        run: aws lambda update-function-code --function-name=lol-clash-roles --zip-file=fileb://deploy.zip 
